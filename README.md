@@ -4,9 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installation Guide
 Install necessary Angular stuff from https://angular.io/guide/quickstart
-0. Install Node.js from https://nodejs.org/en/download/
-1. Check that you have at least node 6.9.x and npm 3.x.x by running `node -v` and `npm -v`
-2. `npm install -g @angular/cli`
+
+1. Install Node.js from https://nodejs.org/en/download/
+2. Check that you have at least node 6.9.x and npm 3.x.x by running `node -v` and `npm -v`
+3. `npm install -g @angular/cli`
 
 ## Development server
 
