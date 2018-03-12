@@ -9,6 +9,8 @@ Install necessary Angular stuff from https://angular.io/guide/quickstart
 2. Check that you have at least node 6.9.x and npm 3.x.x by running `node -v` and `npm -v`
 3. `npm install -g @angular/cli`
 
+## Quickstart Guide
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
