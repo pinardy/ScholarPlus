@@ -1,9 +1,0 @@
-<div class="form-container">
-  <mat-form-field>
-    <mat-select placeholder="Visibility Level">
-      <mat-option *ngFor="let level of levels" [value]="level.value" (click)="selectLevel(level.value)">
-        {{ level.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
