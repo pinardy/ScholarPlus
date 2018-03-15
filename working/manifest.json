@@ -20,5 +20,9 @@
     "assets/js/*",
     "assets/fonts/*",
     "index.html"
-  ]
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  }
 }

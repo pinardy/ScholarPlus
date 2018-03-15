@@ -3,8 +3,14 @@
   "name": "Scholar+",
   "description": "Change the level of visibility for your Google Scholar search results for optimised querying experience",
   "version": "1.0",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "content_scripts": [{
     "css": ["styles.scss"],
+    "js": ["content.js"],
     "matches": ["https://scholar.google.com.sg/*"]
   }],
   "permissions": [],
@@ -12,7 +18,8 @@
   "web_accessible_resources": [
     "assets/css/*",
     "assets/js/*",
-    "assets/fonts/*"
+    "assets/fonts/*",
+    "index.html"
   ],
   "background": {
     "scripts": ["background.js"],

@@ -43,7 +43,7 @@ div.gs_rs {
 div.gs_fl {
   // citations, star button div
   // not sure why background color is needed for display none to work
-  // background-color: white;
+  background-color: white;
   display: none;
 }
 
@@ -52,20 +52,9 @@ div.gs_or_ggsm {
   display: none !important;
 }
 
-div#gs_res_ccl_mid {
-  background-color: white;
-  font-size: 50px;
-  font-weight: bold;
-}
-
-div#gs_qsuggest {
-  // Related Searches
-  background-color: white;
-  // display: none !important;
-  font-size: 55px;  
-}
-
-div.gs_ct1 {
-  background-color: white;
-  display: none !important;
+iframe {
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 20%;
 }
