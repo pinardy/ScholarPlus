@@ -25,50 +25,56 @@ var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
 
 function toggleLeastVisible() {
-    for (var i = 0; i < description.length; i++) {
-        description[i].style.display = "none";
-    }
-    for (var i = 0; i < authors.length; i++) {
-        authors[i].style.display = "none";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-        extra_footer[i].style.display = "none";
-    }
+  var location = window.location.href;
+  location += "&num=20";
+  console.log(location);
+  window.location.replace(location);
 }
 
 function toggleDefault() {
-    console.log('default');
-    for (var i = 0; i < description.length; i++) {
-        description[i].style.display = "initial";
-    }
-    for (var i = 0; i < authors.length; i++) {
-        authors[i].style.display = "none";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-        extra_footer[i].style.display = "none";
-    }
+  var location = window.location.href;
+  location += "&num=10";
+  window.location.replace(location);
 }
 
 function toggleMostVisible() {
-    for (var i = 0; i < description.length; i++) {
-        description[i].style.display = "initial";
-    }
-    for (var i = 0; i < authors.length; i++) {
-        authors[i].style.display = "initial";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-        extra_footer[i].style.display = "initial";
-    }
+  var location = window.location.href;
+  location += "&num=5";
+  window.location.replace(location);
 }
 
-// var button2=document.createElement("button"); 
-// document.body.insertBefore("body")
-// button2.innerText="Normal";
-// var button3=document.createElement("button"); 
-// document.body.insertBefore("body")
-// button3.innerText="Most Visible";
 
-// var iFrame  = document.createElement ("iframe");
-// iFrame.src  = chrome.extension.getURL ("index.html");
-
-// document.body.insertBefore (iFrame, document.body.firstChild);
+window.addEventListener("load", function mostStyleChange() {
+  var location = window.location.href;
+  if (location[location.length - 1] === '5') {
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "initial";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "initial";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "initial";
+    }
+  } else if (location[location.length - 2] === '1' && location[location.length - 1] === '0') {
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "initial";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "none";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "none";
+    }
+  } else {
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "none";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "none";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "none";
+    }
+  }
+});
