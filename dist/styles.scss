@@ -1,0 +1,71 @@
+body {
+  background-color: white !important;
+}
+
+div#gs_hdr {
+  // background-color: #3F51B5 !important;
+  // button#gs_hdr_tsb {
+  //     color: white !important;
+  // }
+  // span.gs_ico {
+  //     color: white !important;
+  // }
+}
+
+div#gs_bdy_sb {
+  display: none;
+}
+
+// content
+div#gs_body {
+  background-color: white;
+}
+
+div#gs_bdy_ccl {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+div.gs_a {
+  // authors div
+  background-color: white;
+  display: none !important;
+}
+
+div.gs_rs {
+  // description
+  background-color: white;
+  display: none !important;
+}
+
+div.gs_fl {
+  // citations, star button div
+  // not sure why background color is needed for display none to work
+  // background-color: white;
+  display: none;
+}
+
+div.gs_or_ggsm {
+  // download button
+  display: none !important;
+}
+
+div#gs_res_ccl_mid {
+  background-color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+div#gs_qsuggest {
+  // Related Searches
+  background-color: white;
+  // display: none !important;
+  font-size: 55px;  
+}
+
+div.gs_ct1 {
+  background-color: white;
+  display: none !important;
+}
