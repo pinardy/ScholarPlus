@@ -26,19 +26,21 @@ var extra_footer = document.getElementsByClassName("gs_fl");
 
 function toggleLeastVisible() {
   var location = window.location.href;
+  var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=20";
-  console.log(location);
   window.location.replace(location);
 }
 
 function toggleDefault() {
   var location = window.location.href;
+  var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=10";
   window.location.replace(location);
 }
 
 function toggleMostVisible() {
   var location = window.location.href;
+  var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=5";
   window.location.replace(location);
 }
@@ -48,17 +50,17 @@ window.addEventListener("load", function mostStyleChange() {
   var location = window.location.href;
   if (location[location.length - 1] === '5') {
     for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "initial";
+      description[i].style.display = "block";
     }
     for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "initial";
+      authors[i].style.display = "block";
     }
     for (var i = 0; i < extra_footer.length; i++) {
-      extra_footer[i].style.display = "initial";
+      extra_footer[i].style.display = "block";
     }
   } else if (location[location.length - 2] === '1' && location[location.length - 1] === '0') {
     for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "initial";
+      description[i].style.display = "block";
     }
     for (var i = 0; i < authors.length; i++) {
       authors[i].style.display = "none";
