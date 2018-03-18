@@ -7,7 +7,7 @@
     "default_icon": "icon16.png"
   },
   "content_scripts": [{
-    "css": ["styles.scss"],
+    "css": ["styles.css"],
     "js": ["content.js"],
     "matches": ["https://scholar.google.com.sg/*"]
   }],

@@ -80,3 +80,9 @@ window.addEventListener("load", function mostStyleChange() {
     }
   }
 });
+
+//Floating Button
+var float_button = document.createElement("button");
+float_button.setAttribute('id','float_button');
+float_button.innerHTML = "+";
+document.body.appendChild(float_button);
