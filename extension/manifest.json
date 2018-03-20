@@ -8,7 +8,7 @@
   },
   "content_scripts": [{
     "css": ["styles.css", "/components/visibility-level/visibility.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css"],
-    "js": ["/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js"],
+    "js": ["materialdesign.js","/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js"],
     "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
@@ -19,7 +19,7 @@
     "assets/fonts/*"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["materialdesign.js"],
     "persistent": true
   }
 }

@@ -16,6 +16,7 @@ adv_search_div.appendChild(adv_search_span);
 var adv_search = document.createElement("button");
 adv_search.innerHTML = "Search Now";
 adv_search.addEventListener("click", popupAdvancedSearch)
+adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 adv_search_div.appendChild(adv_search);
 adv_search_div.setAttribute('class', 'adv-search-container');
 adv_search_span.setAttribute('class', 'title');
@@ -41,6 +42,8 @@ row_div1.setAttribute('class', 'sort-row');
 
 var relevance_button = document.createElement("button");
 relevance_button.innerHTML = "Relevance";
+relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
 
@@ -49,6 +52,7 @@ var row_div2 = document.createElement("div");
 row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
 date_button.innerHTML = "Date";
+date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 row_div2.appendChild(date_button);
 sort_div.appendChild(row_div2);
 
@@ -68,6 +72,7 @@ sidebar_div.appendChild(sort_div)
 sidebar_div.appendChild(hr2);
 sidebar_div.setAttribute('class', 'sidebar-container');
 
+// link to incorporate google material icon
 var link = document.createElement("link");
 link.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
 link.rel = "stylesheet";
