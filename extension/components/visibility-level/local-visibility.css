@@ -1,0 +1,17 @@
+div.local-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+div.gs_r {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* div.gs_or_ggsm {
+    display: none;
+    width: 0;
+} */
+

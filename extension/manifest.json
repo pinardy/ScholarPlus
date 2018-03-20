@@ -7,8 +7,8 @@
     "default_icon": "icon16.png"
   },
   "content_scripts": [{
-    "css": ["styles.css", "advsearch.css"],
-    "js": ["content.js", "advsearch.js", "sidebar.js"],
+    "css": ["styles.css", "/components/visibility-level/visibility.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css"],
+    "js": ["/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js"],
     "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
@@ -16,13 +16,10 @@
   "web_accessible_resources": [
     "assets/css/*",
     "assets/js/*",
-    "assets/fonts/*",
-    "index.html",
-    "advsearch.html",
-    "advsearch.css"
+    "assets/fonts/*"
   ],
   "background": {
-    "scripts": ["content.js", "advsearch.js"],
+    "scripts": ["background.js"],
     "persistent": true
   }
 }
