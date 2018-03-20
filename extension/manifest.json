@@ -8,8 +8,8 @@
   },
   "content_scripts": [{
     "css": ["styles.css", "advsearch.css"],
-    "js": ["content.js", "advsearch.js"],
-    "matches": ["https://scholar.google.com.sg/*"]
+    "js": ["content.js", "advsearch.js", "sidebar.js"],
+    "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
   "content_security_policy": "script-src 'self' 'unsafe-eval';object-src 'self'",
