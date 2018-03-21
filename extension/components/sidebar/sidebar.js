@@ -83,6 +83,14 @@ var advSearch = document.getElementById("gs_bdy_sb");
 advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
 
 function popupAdvancedSearch() {
-  // TODO: to code popup
-  console.log('not done yet');
+  var location = window.location.href;
+  if (location.includes("#d=gs_asd&p=&u=")) {
+    var location = location.replace(/#d=gs_asd&p=&u=/g, "");
+  }
+  console.log(location)
+  location += "#d=gs_asd&p=&u=" // appends advanced search to the url
+  // location += "hello" // appends advanced search to the url
+  console.log(location)
+  // window.location.replace(location)
+  window.location.href = location
 }
