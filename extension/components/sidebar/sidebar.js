@@ -1,4 +1,3 @@
-
 // ji's implementation of the sidebar
 // div for the advanced search
 var adv_search_div = document.createElement("div");
@@ -16,7 +15,7 @@ adv_search_div.appendChild(adv_search_span);
 var adv_search = document.createElement("button");
 adv_search.innerHTML = "Search Now";
 adv_search.addEventListener("click", popupAdvancedSearch)
-adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+// adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 adv_search_div.appendChild(adv_search);
 adv_search_div.setAttribute('class', 'adv-search-container');
 adv_search_span.setAttribute('class', 'title');
@@ -28,6 +27,7 @@ var filter_list = document.createElement("i");
 filter_list.setAttribute("class", "material-icons")
 filter_list.innerHTML = "filter_list";
 sort_span.appendChild(filter_list);
+
 var sort_text = document.createElement("span");
 sort_text.innerHTML = "Sort by";
 sort_span.appendChild(sort_text);
@@ -36,23 +36,28 @@ sort_div.appendChild(sort_span);
 sort_div.setAttribute('class', 'sort-container');
 sort_span.setAttribute('class', 'title');
 
-// div for row 1
+// Relevance (div for row 1)
 var row_div1 = document.createElement("div");
 row_div1.setAttribute('class', 'sort-row');
 
 var relevance_button = document.createElement("button");
 relevance_button.innerHTML = "Relevance";
-relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+relevance_button.addEventListener("click", changeToRelevance)
+
+// relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
 
-// div for row 2
+// Date (div for row 2)
 var row_div2 = document.createElement("div");
 row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
 date_button.innerHTML = "Date";
-date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+date_button.addEventListener("click", changeToDate)
+
+// date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+
 row_div2.appendChild(date_button);
 sort_div.appendChild(row_div2);
 
@@ -88,9 +93,21 @@ function popupAdvancedSearch() {
     var location = location.replace(/#d=gs_asd&p=&u=/g, "");
   }
   console.log(location)
-  location += "#d=gs_asd&p=&u=" // appends advanced search to the url
-  // location += "hello" // appends advanced search to the url
+  location += "=#d=gs_asd" // appends advanced search to the url
   console.log(location)
-  // window.location.replace(location)
-  window.location.href = location
+  window.location.replace(location)
+}
+
+function changeToRelevance() {
+  var location = window.location.href;
+  if (location.includes("&scisbd=1")) {
+    var location = location.replace(/&scisbd=1/g, "");
+  }
+  window.location.replace(location)
+}
+
+function changeToDate() {
+  var location = window.location.href;
+  location += "&scisbd=1"
+  window.location.replace(location)
 }
