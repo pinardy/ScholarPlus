@@ -6,3 +6,6 @@ In order to install this plugin:
 1. Go to [chrome extensions page](chrome://extensions)
 2. Click `developer mode` checkbox
 3. Click `Load unpacked extension ...` and select the `extension` folder that you have cloned from this repo
+
+# Weird Bugs
+1. Location URL cannot start with "#"
