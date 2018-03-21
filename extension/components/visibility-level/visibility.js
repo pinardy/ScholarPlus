@@ -23,6 +23,7 @@ query_results_body.insertBefore(button_div, query_results_body.childNodes[0]);
 var description = document.getElementsByClassName("gs_rs");
 var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
+var author_div = document.getElementsByClassName("local_author_container");
 
 function toggleLeastVisible() {
   var location = window.location.href;
@@ -45,7 +46,6 @@ function toggleMostVisible() {
   window.location.replace(location);
 }
 
-
 window.addEventListener("load", function mostStyleChange() {
   var location = window.location.href;
   if (location[location.length - 1] === '5') {
@@ -58,6 +58,10 @@ window.addEventListener("load", function mostStyleChange() {
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "block";
     }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "block";
+      retrieveAuthorProfile(author_div[i], authors[i], i, true);
+    }
   } else if (location[location.length - 2] === '1' && location[location.length - 1] === '0') {
     for (var i = 0; i < description.length; i++) {
       description[i].style.display = "block";
@@ -67,6 +71,9 @@ window.addEventListener("load", function mostStyleChange() {
     }
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "none";
+    }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "none";
     }
   } else {
     for (var i = 0; i < description.length; i++) {
@@ -78,6 +85,9 @@ window.addEventListener("load", function mostStyleChange() {
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "none";
     }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "none";
+    }
   }
 });
 
@@ -86,3 +96,4 @@ var float_button = document.createElement("button");
 float_button.setAttribute('id','float_button');
 float_button.innerHTML = "+";
 document.body.appendChild(float_button);
+
