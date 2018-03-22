@@ -28,6 +28,33 @@ for (var i = 0; i < individual_results_body.length; i++) {
   button_div.setAttribute('class', 'local-button-container');
   individual_results_body[i].insertBefore(button_div, null);
 
+  // create download div
+  var download_button_div = document.createElement("div");
+  download_button_div.setAttribute("class", "download-button-div");
+  var current_download_buttons = individual_results_body[i].getElementsByClassName("gs_or_ggsm");
+  if (current_download_buttons.length > 0) {
+    // create download button
+    var anchor = current_download_buttons[0].getElementsByTagName("a");
+    var download_button = document.createElement("button");
+    download_url = anchor[0].href;
+    download_button.setAttribute("class", "download-button");
+    var download_icon = document.createElement("i");
+    download_icon.setAttribute("class", "material-icons")
+    download_icon.innerHTML = "file_download";
+    download_button.appendChild(download_icon);
+    download_button_text = document.createElement("span");
+    download_button_text.innerHTML = "Download";
+    download_button.appendChild(download_button_text);
+    individual_results_body[i].insertBefore(download_button, null);
+    download_button.addEventListener("click", openDownloadTab.bind(null, download_url));
+    download_button_div.appendChild(download_button);
+  }
+  var indiv_block = document.getElementsByClassName("gs_ri");
+  indiv_block[i].insertBefore(download_button_div, null);
+}
+
+function openDownloadTab(url) {
+  window.open(url);
 }
 
 // selecting the description, authors, and extra footer, they are arrays
@@ -45,7 +72,7 @@ function toggleLeastVisible(index) {
 
 function toggleDefault(index) {
   description[index].style.display = "block";
-  authors[index].style.display = "none";
+  authors[index].style.display = "block";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "none";
 }
@@ -55,32 +82,31 @@ function toggleMostVisible(index) {
   authors[index].style.display = "block";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "block";
-
   retrieveAuthorProfile(author_div[index], authors[index], index, true)
 
 }
 
 
 var gs_ri = document.getElementsByClassName("gs_ri");
-function retrieveAuthorProfile(div, author, index, asynchronous){
+
+function retrieveAuthorProfile(div, author, index, asynchronous) {
   //Check if the Author Profile was already loaded, dont make extra copies
-  if (div.firstChild == null){
+  if (div.firstChild == null) {
     // Check for First Author Profile, add to view
-    if (author.firstChild.tagName == "A"){
+    if (author.firstChild.tagName == "A") {
       var xmlHttp = new XMLHttpRequest();
 
       if (asynchronous == false) {
-        xmlHttp.open( "GET", author.firstChild, false);// false for sync
-        xmlHttp.send( null );
+        xmlHttp.open("GET", author.firstChild, false); // false for sync
+        xmlHttp.send(null);
         authorDOM(author.firstChild, index, xmlHttp.responseText)
-      }
-      else {
-        xmlHttp.open( "GET", author.firstChild, true);// true for async
-        xmlHttp.onreadystatechange = function() {
+      } else {
+        xmlHttp.open("GET", author.firstChild, true); // true for async
+        xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             authorDOM(author.firstChild, index, xmlHttp.responseText)
         }
-        xmlHttp.send( null );
+        xmlHttp.send(null);
       }
     }
     // No author profile, add default message
@@ -92,9 +118,9 @@ function retrieveAuthorProfile(div, author, index, asynchronous){
   }
 }
 
-function authorDOM (theUrl, index, response){
-  var parser=new DOMParser();
-  var htmlDoc=parser.parseFromString(response,"text/html");
+function authorDOM(theUrl, index, response) {
+  var parser = new DOMParser();
+  var htmlDoc = parser.parseFromString(response, "text/html");
 
   // Author Name
   var author_format_name = document.createElement("h5");
@@ -122,11 +148,10 @@ function authorDOM (theUrl, index, response){
   var max_articles = 3
   var no_of_articles = Math.min(author_article_body.length, max_articles)
   for (var i = 0; i < no_of_articles; i++) {
-      var _div = document.createElement("div");
-      _div.setAttribute('class', 'local_author_article_');
-      _div.appendChild(author_article_body[i]);
-      author_format_article.appendChild(_div);
+    var _div = document.createElement("div");
+    _div.setAttribute('class', 'local_author_article_');
+    _div.appendChild(author_article_body[i]);
+    author_format_article.appendChild(_div);
   }
   gs_ri[index].appendChild(author_format_article);
 }
-

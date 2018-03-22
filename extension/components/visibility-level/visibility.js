@@ -67,7 +67,7 @@ window.addEventListener("load", function mostStyleChange() {
       description[i].style.display = "block";
     }
     for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "none";
+      authors[i].style.display = "block";
     }
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "none";
