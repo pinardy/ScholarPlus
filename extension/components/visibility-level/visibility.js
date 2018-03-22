@@ -2,15 +2,15 @@ var button_div = document.createElement("div");
 
 var lv_button = document.createElement("button");
 lv_button.innerHTML = "Least Visible";
-lv_button.addEventListener("click", toggleLeastVisible)
+lv_button.addEventListener("click", toggleLeastVisibleAll)
 
 var d_button = document.createElement("button");
 d_button.innerHTML = "Default";
-d_button.addEventListener("click", toggleDefault)
+d_button.addEventListener("click", toggleDefaultAll)
 
 var mv_button = document.createElement("button");
 mv_button.innerHTML = "Most Visible"
-mv_button.addEventListener("click", toggleMostVisible)
+mv_button.addEventListener("click", toggleMostVisibleAll)
 
 button_div.appendChild(lv_button)
 button_div.appendChild(d_button)
@@ -25,21 +25,21 @@ var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
 var author_div = document.getElementsByClassName("local_author_container");
 
-function toggleLeastVisible() {
+function toggleLeastVisibleAll() {
   var location = window.location.href;
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=20";
   window.location.replace(location);
 }
 
-function toggleDefault() {
+function toggleDefaultAll() {
   var location = window.location.href;
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=10";
   window.location.replace(location);
 }
 
-function toggleMostVisible() {
+function toggleMostVisibleAll() {
   var location = window.location.href;
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=5";
@@ -91,9 +91,46 @@ window.addEventListener("load", function mostStyleChange() {
   }
 });
 
-//Floating Button
-var float_button = document.createElement("button");
-float_button.setAttribute('id','float_button');
-float_button.innerHTML = "+";
-document.body.appendChild(float_button);
+// Floating Action Button
+var float_nav = document.createElement("nav");
+float_nav.setAttribute('class', 'container');
 
+var defImgURL = chrome.extension.getURL("view_def.png");
+var lessImgURL = chrome.extension.getURL("view_less.png");
+var moreImgURL = chrome.extension.getURL("view_more.png");
+
+var mostVisButton = document.createElement("a");
+mostVisButton.setAttribute('class', 'buttons');
+mostVisButton.setAttribute('href', '#');
+mostVisButton.setAttribute('tooltip', 'Most Visible');
+mostVisButton.addEventListener("click", toggleMostVisibleAll);
+
+var defVisButton = document.createElement("a");
+defVisButton.setAttribute('class', 'buttons');
+defVisButton.setAttribute('href', '#');
+defVisButton.setAttribute('tooltip', 'Default');
+defVisButton.addEventListener("click", toggleDefaultAll);
+
+var leastVisButton = document.createElement("a");
+leastVisButton.setAttribute('class', 'buttons');
+leastVisButton.setAttribute('href', '#');
+leastVisButton.setAttribute('tooltip', 'Least Visible');
+leastVisButton.addEventListener("click", toggleLeastVisibleAll);
+
+var button_6 = document.createElement("a");
+button_6.setAttribute('class', 'buttons');
+button_6.setAttribute('href', '#');
+button_6.setAttribute('tooltip', 'Button 6');
+
+var span_1 = document.createElement("span");
+var span_2 = document.createElement("span");
+span_2.setAttribute('class', 'rotate');
+span_1.appendChild(span_2);
+button_6.appendChild(span_1);
+
+float_nav.appendChild(mostVisButton);
+float_nav.appendChild(defVisButton);
+float_nav.appendChild(leastVisButton);
+float_nav.appendChild(button_6);
+
+document.body.appendChild(float_nav);

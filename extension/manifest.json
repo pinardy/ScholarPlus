@@ -16,7 +16,9 @@
   "web_accessible_resources": [
     "assets/css/*",
     "assets/js/*",
-    "assets/fonts/*"
+    "assets/fonts/*",
+    "*.png",
+    "*.PNG"    
   ],
   "background": {
     "scripts": ["materialdesign.js"],
