@@ -105,6 +105,11 @@ function changeToRelevance() {
   if (location.includes("&scisbd=1")) {
     var location = location.replace(/&scisbd=1/g, "");
   }
+  if (location.endsWith("#")) {
+    console.log("href ends with #")
+    console.log(typeof location)
+    location = location.substring(0, location.length - 1)
+  }
   window.location.replace(location)
 }
 
