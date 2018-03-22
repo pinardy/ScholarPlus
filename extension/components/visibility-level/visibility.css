@@ -1,32 +1,32 @@
-#float_div{
-    position: fixed;
-    bottom: 80px;
-    right: 80px;
-    z-index: 99;    
-}
+/* #float_div{ */
+    /* position: fixed; */
+    /* bottom: 80px; */
+    /* right: 80px; */
+    /* z-index: 99;     */
+/* } */
 
-#float_main{
-    display: block;
-    /* position: fixed; /* Fixed/sticky position */
-    min-width: 60px;
-    min-height: 60px;
-    /* bottom: 80px; /* Place the button at the bottom of the page */
-    /* right: 80px; /* Place the button 30px from the right */
-    /* z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    background: #9999FF; /* Set a background color */
-    box-shadow: 0 6px 10px 0 #666;
-    color: white; /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 10px; /* Some padding */
-    border-radius: 50%; /* Rounded corners */
-    font-size: 24px; /* Increase font size */
-}
-#float_main:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 10px 0 #666;
-}
+/* #float_main{ */
+    /* display: block; */
+    /* position: fixed; Fixed/sticky position */
+    /* min-width: 60px; */
+    /* min-height: 60px; */
+    /* bottom: 80px; Place the button at the bottom of the page */
+    /* right: 80px; Place the button 30px from the right */
+    /* z-index: 99; Make sure it does not overlap */
+    /* border: none; Remove borders */
+    /* outline: none; Remove outline */
+    /* background: #9999FF; Set a background color */
+    /* box-shadow: 0 6px 10px 0 #666; */
+    /* color: white; Text color */
+    /* cursor: pointer; Add a mouse pointer on hover */
+    /* padding: 10px; Some padding */
+    /* border-radius: 50%; Rounded corners */
+    /* font-size: 24px; Increase font size */
+/* } */
+/* #float_main:hover { */
+    /* transform: scale(1.05); */
+    /* box-shadow: 0 6px 10px 0 #666; */
+/* } */
 
 
 .container {
@@ -43,7 +43,7 @@
   opacity: 1;
 }
 .container:hover .rotate {
-  background-image: url("https://cbwconline.com/IMG/Codepen/Compose.svg");
+  background-image: url('chrome-extension://__MSG_@@extension_id__/eye.png');
   transform: rotate(0deg);
 }
 
@@ -74,14 +74,15 @@
   height: 56px;
   opacity: 1;
 }
+
 .buttons:nth-last-of-type(2) {
-  background: #3C80F6 url('chrome-extension://npbfkddafkacgamfnbifmigffbmffabc/view_least.png') center no-repeat;
+  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_least.png') center no-repeat;
 }
 .buttons:nth-last-of-type(3) {
-  background: #3C80F6 url('chrome-extension://npbfkddafkacgamfnbifmigffbmffabc/view_def.png') center no-repeat;
+  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_def.png') center no-repeat;
 }
 .buttons:nth-last-of-type(4) {
-  background: #3C80F6 url('chrome-extension://npbfkddafkacgamfnbifmigffbmffabc/view_most.png') center no-repeat;
+  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_most.png') center no-repeat;
 }
 
 .buttons:hover {
@@ -125,12 +126,12 @@
 
 
 
-div.button-container {
-    right: 0;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 0.2rem;
-  }
+/* div.button-container { */
+    /* right: 0; */
+    /* position: absolute; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin-top: 1rem; */
+    /* margin-right: 1rem; */
+    /* margin-bottom: 0.2rem; */
+/* } */
