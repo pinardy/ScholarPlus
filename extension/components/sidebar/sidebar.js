@@ -1,4 +1,3 @@
-// ji's implementation of the sidebar
 // div for the advanced search
 var adv_search_div = document.createElement("div");
 var adv_search_span = document.createElement("span");
@@ -14,7 +13,7 @@ adv_search_div.appendChild(adv_search_span);
 
 var adv_search = document.createElement("button");
 adv_search.innerHTML = "Search Now";
-adv_search.addEventListener("click", popupAdvancedSearch)
+adv_search.addEventListener("click", popupAdvancedSearchTest)
 // adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 adv_search_div.appendChild(adv_search);
 adv_search_div.setAttribute('class', 'adv-search-container');
@@ -92,10 +91,25 @@ function popupAdvancedSearch() {
   if (location.includes("#d=gs_asd&p=&u=")) {
     var location = location.replace(/#d=gs_asd&p=&u=/g, "");
   }
-  console.log(location)
   location += "=#d=gs_asd" // appends advanced search to the url
-  console.log(location)
   window.location.replace(location)
+}
+
+function popupAdvancedSearchTest() {
+  var location = window.location.href;
+
+  // Replaces trailing "==#"
+  if (location.includes("==#")) {
+    console.log("contains ==#")
+    location = location.replace(/==#/g, " ");
+  }
+  // Replaces trailing "=#"
+  if (location.includes("=#")) {
+    console.log("contains =#")
+    location = location.replace(/=#/g, " ");
+  }
+  location += "=#d=gs_asd";
+  window.location = location
 }
 
 function changeToRelevance() {
