@@ -1,3 +1,4 @@
+
 // ji's implementation of the sidebar
 // div for the advanced search
 var adv_search_div = document.createElement("div");
@@ -27,7 +28,6 @@ var filter_list = document.createElement("i");
 filter_list.setAttribute("class", "material-icons")
 filter_list.innerHTML = "filter_list";
 sort_span.appendChild(filter_list);
-
 var sort_text = document.createElement("span");
 sort_text.innerHTML = "Sort by";
 sort_span.appendChild(sort_text);
@@ -36,28 +36,23 @@ sort_div.appendChild(sort_span);
 sort_div.setAttribute('class', 'sort-container');
 sort_span.setAttribute('class', 'title');
 
-// Relevance (div for row 1)
+// div for row 1
 var row_div1 = document.createElement("div");
 row_div1.setAttribute('class', 'sort-row');
 
 var relevance_button = document.createElement("button");
 relevance_button.innerHTML = "Relevance";
-relevance_button.addEventListener("click", changeToRelevance)
-
 // relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
 
-// Date (div for row 2)
+// div for row 2
 var row_div2 = document.createElement("div");
 row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
 date_button.innerHTML = "Date";
-date_button.addEventListener("click", changeToDate)
-
 // date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
-
 row_div2.appendChild(date_button);
 sort_div.appendChild(row_div2);
 
@@ -88,26 +83,7 @@ var advSearch = document.getElementById("gs_bdy_sb");
 advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
 
 function popupAdvancedSearch() {
-  var location = window.location.href;
-  if (location.includes("#d=gs_asd&p=&u=")) {
-    var location = location.replace(/#d=gs_asd&p=&u=/g, "");
-  }
-  console.log(location)
-  location += "=#d=gs_asd" // appends advanced search to the url
-  console.log(location)
-  window.location.replace(location)
+  // TODO: to code popup
+  console.log('not done yet');
 }
-
-function changeToRelevance() {
-  var location = window.location.href;
-  if (location.includes("&scisbd=1")) {
-    var location = location.replace(/&scisbd=1/g, "");
-  }
-  window.location.replace(location)
-}
-
-function changeToDate() {
-  var location = window.location.href;
-  location += "&scisbd=1"
-  window.location.replace(location)
-}
+window.location.assign

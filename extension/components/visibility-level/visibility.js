@@ -56,7 +56,7 @@ window.addEventListener("load", function mostStyleChange() {
       authors[i].style.display = "block";
     }
     for (var i = 0; i < extra_footer.length; i++) {
-      extra_footer[i].style.display = "block";
+      extra_footer[i].style.display = "none";
     }
     for (var i = 0; i < author_div.length; i++) {
       author_div[i].style.display = "block";
