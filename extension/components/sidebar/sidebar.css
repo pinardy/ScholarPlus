@@ -1,8 +1,13 @@
+div#gs_bdy_sb {
+    /* display: flex; */
+    /* justify-content: center; */
+}
 div.sidebar-container {
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
+  margin: auto;
   margin-top: 1rem;
+  max-width: 80%;
 }
 
 div.sort-row {
