@@ -95,10 +95,6 @@ window.addEventListener("load", function mostStyleChange() {
 var float_nav = document.createElement("nav");
 float_nav.setAttribute('class', 'container');
 
-var defImgURL = chrome.extension.getURL("view_def.png");
-var lessImgURL = chrome.extension.getURL("view_less.png");
-var moreImgURL = chrome.extension.getURL("view_more.png");
-
 var mostVisButton = document.createElement("a");
 mostVisButton.setAttribute('class', 'buttons');
 mostVisButton.setAttribute('href', '#');
@@ -120,7 +116,7 @@ leastVisButton.addEventListener("click", toggleLeastVisibleAll);
 var button_6 = document.createElement("a");
 button_6.setAttribute('class', 'buttons');
 button_6.setAttribute('href', '#');
-button_6.setAttribute('tooltip', 'Button 6');
+// button_6.setAttribute('tooltip', 'Button 6');
 
 var span_1 = document.createElement("span");
 var span_2 = document.createElement("span");

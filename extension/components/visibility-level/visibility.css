@@ -43,7 +43,7 @@
   opacity: 1;
 }
 .container:hover .rotate {
-  background-image: url("https://cbwconline.com/IMG/Codepen/Compose.svg");
+  background-image: url('chrome-extension://__MSG_@@extension_id__/eye.png');
   transform: rotate(0deg);
 }
 
