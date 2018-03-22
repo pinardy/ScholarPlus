@@ -1,25 +1,25 @@
-var button_div = document.createElement("div");
+// var button_div = document.createElement("div");
 
-var lv_button = document.createElement("button");
-lv_button.innerHTML = "Least Visible";
-lv_button.addEventListener("click", toggleLeastVisibleAll)
+// var lv_button = document.createElement("button");
+// lv_button.innerHTML = "Least Visible";
+// lv_button.addEventListener("click", toggleLeastVisibleAll)
 
-var d_button = document.createElement("button");
-d_button.innerHTML = "Default";
-d_button.addEventListener("click", toggleDefaultAll)
+// var d_button = document.createElement("button");
+// d_button.innerHTML = "Default";
+// d_button.addEventListener("click", toggleDefaultAll)
 
-var mv_button = document.createElement("button");
-mv_button.innerHTML = "Most Visible"
-mv_button.addEventListener("click", toggleMostVisibleAll)
+// var mv_button = document.createElement("button");
+// mv_button.innerHTML = "Most Visible"
+// mv_button.addEventListener("click", toggleMostVisibleAll)
 
-button_div.appendChild(lv_button)
-button_div.appendChild(d_button)
-button_div.appendChild(mv_button)
+// button_div.appendChild(lv_button)
+// button_div.appendChild(d_button)
+// button_div.appendChild(mv_button)
 
-button_div.setAttribute('class', 'button-container');
+// button_div.setAttribute('class', 'button-container');
 
-var query_results_body = document.getElementById("gs_bdy_ccl");
-query_results_body.insertBefore(button_div, query_results_body.childNodes[0]);
+// var query_results_body = document.getElementById("gs_bdy_ccl");
+// query_results_body.insertBefore(button_div, query_results_body.childNodes[0]);
 var description = document.getElementsByClassName("gs_rs");
 var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
