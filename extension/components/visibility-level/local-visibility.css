@@ -21,16 +21,3 @@ div.gs_r {
 div.gs_ri {
     min-width: 712px;
 }
-
-button.footer-button {
-    display: flex;
-    align-items: center;
-    max-width: 30%;
-    margin-right: 1rem;
-    margin-top: 1rem;
-}
-
-div.footer-container {
-    display: flex;
-    
-}
