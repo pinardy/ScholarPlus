@@ -34,7 +34,7 @@ sort_div.appendChild(sort_span);
 sort_div.setAttribute('class', 'sort-container');
 sort_span.setAttribute('class', 'title');
 
-// div for row 1
+// Relevance div
 var row_div1 = document.createElement("div");
 row_div1.setAttribute('class', 'sort-row');
 
@@ -46,13 +46,16 @@ relevance_button.innerHTML = "Relevance";
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
 
-// div for row 2
+// Date div
 var row_div2 = document.createElement("div");
 row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
 date_button.addEventListener("click", changeToDate)
 date_button.innerHTML = "Date";
-// date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+// date_button.setAttribute("class", "mdl-button m.dl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+
+buttonStyleChecker();
+
 row_div2.appendChild(date_button);
 sort_div.appendChild(row_div2);
 
@@ -106,10 +109,13 @@ function changeToRelevance() {
     var location = location.replace(/&scisbd=1/g, "");
   }
   if (location.endsWith("#")) {
-    console.log("href ends with #")
-    console.log(typeof location)
     location = location.substring(0, location.length - 1)
   }
+
+  // Remember in session that the user is sorting by relevance (use for CSS)
+  sessionStorage.setItem("relevance", "active");
+  sessionStorage.setItem("date", "inactive");
+  
   window.location.replace(location)
 }
 
@@ -118,7 +124,32 @@ function changeToDate() {
   if (!location.includes("&scisbd=1")) {
     location += "&scisbd=1"
   }
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+
+  // Remember in session that the user is sorting by date (use for CSS)
+  sessionStorage.setItem("date", "active");
+  sessionStorage.setItem("relevance", "inactive");
+
   window.location.replace(location)
 }
 
-
+function buttonStyleChecker() {
+  if (sessionStorage.getItem("date") == "active"){
+    date_button.style.background = "rgb(76,142,251)";
+    date_button.style.color = "white";
+  }
+  if (sessionStorage.getItem("relevance") == "active"){
+    relevance_button.style.background = "rgb(76,142,251)";
+    relevance_button.style.color = "white";
+  }
+  if (sessionStorage.getItem("date") == "inactive"){
+    date_button.style.background = null;
+    date_button.style.color = null;
+  }
+  if (sessionStorage.getItem("relevance") == "inactive"){
+    relevance_button.style.background = null;
+    relevance_button.style.color = null;
+  }
+}
