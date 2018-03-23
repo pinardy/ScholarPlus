@@ -42,6 +42,16 @@ for (var i = 0; i < individual_results_body.length; i++) {
   var no_of_citations = document.createElement("span");
   for (let i = 0; i < all_anchors.length; i++) {
 
+    // reading the href of save to lib
+    if (all_anchors[i].className == "gs_or_sav") {
+      save_to_library_button.addEventListener("click", saveToLibrary.bind(null, all_anchors[i].href));
+      footer_div.appendChild(save_to_library_button);
+    }
+    // reading the href of generating citations
+    if (all_anchors[i].className == "gs_or_cit") {
+      generate_citation_button.addEventListener("click", generateCitation.bind(null, all_anchors[i].href));
+      footer_div.appendChild(generate_citation_button);
+    }
     // reading the number of citations
     if (all_anchors[i].innerHTML.match(/Cited/g)) {
       no_of_citations.innerHTML = all_anchors[i].innerHTML;
@@ -59,21 +69,10 @@ for (var i = 0; i < individual_results_body.length; i++) {
       versions_button.appendChild(versions_button_text);
       versions_button.setAttribute("class", "footer-button");
       versions_button.addEventListener("click", readOtherVersions.bind(null, all_anchors[i].href));
-    }
-
-    // reading the href of save to lib
-    if (all_anchors[i].className == "gs_or_sav") {
-        save_to_library_button.addEventListener("click", saveToLibrary.bind(null, all_anchors[i].href));
-    }
-    // reading the href of generating citations
-    if (all_anchors[i].className == "gs_or_cit") {
-        generate_citation_button.addEventListener("click", generateCitation.bind(null, all_anchors[i].href))
+      footer_div.appendChild(versions_button);
     }
   }
   no_of_citations_div.appendChild(no_of_citations);
-  footer_div.appendChild(save_to_library_button);
-  footer_div.appendChild(generate_citation_button);
-  footer_div.appendChild(versions_button);
 
   var current_download_buttons = individual_results_body[i].getElementsByClassName("gs_or_ggsm");
   if (current_download_buttons.length > 0) {
@@ -108,11 +107,11 @@ function readOtherVersions(url) {
 }
 
 function generateCitation(url) {
-    console.log(url);
-    window.open(url);
+  console.log(url);
+  window.open(url);
 }
 
 function saveToLibrary(url) {
-    console.log(url);
-    window.open(url);
+  console.log(url);
+  window.open(url);
 }
