@@ -7,8 +7,8 @@
     "default_icon": "icon16.png"
   },
   "content_scripts": [{
-    "css": ["styles.css", "/components/visibility-level/visibility.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css", "/components/footer/footer.css"],
-    "js": ["materialdesign.js","/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js", "/components/footer/footer.js"],
+    "css": ["styles.css", "/components/visibility-level/visibility.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css", "/components/result-footer/result-footer.css"],
+    "js": ["materialdesign.js","/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js", "/components/result-footer/result-footer.js"],
     "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
