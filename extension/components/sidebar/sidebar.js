@@ -54,6 +54,7 @@ date_button.addEventListener("click", changeToDate)
 date_button.innerHTML = "Date";
 // date_button.setAttribute("class", "mdl-button m.dl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
+// Edits styling of filter buttons accordingly
 buttonStyleChecker();
 
 row_div2.appendChild(date_button);
@@ -84,6 +85,7 @@ document.getElementsByTagName("head")[0].appendChild(link);
 // append to the google scholar sidebar
 var advSearch = document.getElementById("gs_bdy_sb");
 advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
+
 
 
 function popupAdvancedSearch() {
@@ -136,6 +138,12 @@ function changeToDate() {
 }
 
 function buttonStyleChecker() {
+  // Default view is relevance
+  if (sessionStorage.getItem("relevance") == null){
+    relevance_button.style.background = "rgb(76,142,251)";
+    relevance_button.style.color = "white";
+  }
+
   if (sessionStorage.getItem("date") == "active"){
     date_button.style.background = "rgb(76,142,251)";
     date_button.style.color = "white";
