@@ -41,7 +41,6 @@ row_div1.setAttribute('class', 'sort-row');
 var relevance_button = document.createElement("button");
 relevance_button.addEventListener("click", changeToRelevance)
 relevance_button.innerHTML = "Relevance";
-// relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
@@ -52,7 +51,6 @@ row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
 date_button.addEventListener("click", changeToDate)
 date_button.innerHTML = "Date";
-// date_button.setAttribute("class", "mdl-button m.dl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
 // Edits styling of filter buttons accordingly
 buttonStyleChecker();
@@ -86,8 +84,6 @@ document.getElementsByTagName("head")[0].appendChild(link);
 var advSearch = document.getElementById("gs_bdy_sb");
 advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
 
-
-
 function popupAdvancedSearch() {
   var location = window.location.href;
 
@@ -113,11 +109,6 @@ function changeToRelevance() {
   if (location.endsWith("#")) {
     location = location.substring(0, location.length - 1)
   }
-
-  // Remember in session that the user is sorting by relevance (use for CSS)
-  sessionStorage.setItem("relevance", "active");
-  sessionStorage.setItem("date", "inactive");
-  
   window.location.replace(location)
 }
 
@@ -129,35 +120,19 @@ function changeToDate() {
   if (location.endsWith("#")) {
     location = location.substring(0, location.length - 1)
   }
-
-  // Remember in session that the user is sorting by date (use for CSS)
-  sessionStorage.setItem("date", "active");
-  sessionStorage.setItem("relevance", "inactive");
-
   window.location.replace(location)
 }
 
-function buttonStyleChecker() {
-  // Default view is relevance
-  if (sessionStorage.getItem("relevance") == null){
-    relevance_button.style.background = "rgb(76,142,251)";
-    relevance_button.style.color = "white";
-  }
 
-  if (sessionStorage.getItem("date") == "active"){
+function buttonStyleChecker() {
+  var location = window.location.href;
+  if (location.includes("&scisbd=1")) {
     date_button.style.background = "rgb(76,142,251)";
     date_button.style.color = "white";
-  }
-  if (sessionStorage.getItem("relevance") == "active"){
+  } else {
     relevance_button.style.background = "rgb(76,142,251)";
     relevance_button.style.color = "white";
   }
-  if (sessionStorage.getItem("date") == "inactive"){
-    date_button.style.background = null;
-    date_button.style.color = null;
-  }
-  if (sessionStorage.getItem("relevance") == "inactive"){
-    relevance_button.style.background = null;
-    relevance_button.style.color = null;
-  }
 }
+
+
