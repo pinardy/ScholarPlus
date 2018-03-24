@@ -1,5 +1,3 @@
-
-// ji's implementation of the sidebar
 // div for the advanced search
 var adv_search_div = document.createElement("div");
 var adv_search_span = document.createElement("span");
@@ -16,7 +14,7 @@ adv_search_div.appendChild(adv_search_span);
 var adv_search = document.createElement("button");
 adv_search.innerHTML = "Search Now";
 adv_search.addEventListener("click", popupAdvancedSearch)
-adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+// adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 adv_search_div.appendChild(adv_search);
 adv_search_div.setAttribute('class', 'adv-search-container');
 adv_search_span.setAttribute('class', 'title');
@@ -36,23 +34,27 @@ sort_div.appendChild(sort_span);
 sort_div.setAttribute('class', 'sort-container');
 sort_span.setAttribute('class', 'title');
 
-// div for row 1
+// Relevance div
 var row_div1 = document.createElement("div");
 row_div1.setAttribute('class', 'sort-row');
 
 var relevance_button = document.createElement("button");
+relevance_button.addEventListener("click", changeToRelevance)
 relevance_button.innerHTML = "Relevance";
-relevance_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
 
 row_div1.appendChild(relevance_button);
 sort_div.appendChild(row_div1);
 
-// div for row 2
+// Date div
 var row_div2 = document.createElement("div");
 row_div2.setAttribute('class', 'sort-row');
 var date_button = document.createElement("button");
+date_button.addEventListener("click", changeToDate)
 date_button.innerHTML = "Date";
-date_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
+
+// Edits styling of filter buttons accordingly
+buttonStyleChecker();
+
 row_div2.appendChild(date_button);
 sort_div.appendChild(row_div2);
 
@@ -84,13 +86,53 @@ advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
 
 function popupAdvancedSearch() {
   var location = window.location.href;
-  if (location.includes("#d=gs_asd&p=&u=")) {
-    var location = location.replace(/#d=gs_asd&p=&u=/g, "");
+
+  // Replaces trailing "==#"
+  if (location.includes("==#")) {
+    console.log("contains ==#")
+    location = location.replace(/==#/g, " ");
   }
-  console.log(location)
-  location += "#d=gs_asd&p=&u=" // appends advanced search to the url
-  // location += "hello" // appends advanced search to the url
-  console.log(location)
-  // window.location.replace(location)
-  window.location.href = location
+  // Replaces trailing "=#"
+  if (location.includes("=#")) {
+    console.log("contains =#")
+    location = location.replace(/=#/g, " ");
+  }
+  location += "=#d=gs_asd";
+  window.location = location
 }
+
+function changeToRelevance() {
+  var location = window.location.href;
+  if (location.includes("&scisbd=1")) {
+    var location = location.replace(/&scisbd=1/g, "");
+  }
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+  window.location.replace(location)
+}
+
+function changeToDate() {
+  var location = window.location.href;
+  if (!location.includes("&scisbd=1")) {
+    location += "&scisbd=1"
+  }
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+  window.location.replace(location)
+}
+
+
+function buttonStyleChecker() {
+  var location = window.location.href;
+  if (location.includes("&scisbd=1")) {
+    date_button.style.background = "rgb(76,142,251)";
+    date_button.style.color = "white";
+  } else {
+    relevance_button.style.background = "rgb(76,142,251)";
+    relevance_button.style.color = "white";
+  }
+}
+
+

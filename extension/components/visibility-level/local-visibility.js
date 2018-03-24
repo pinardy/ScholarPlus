@@ -27,7 +27,6 @@ for (var i = 0; i < individual_results_body.length; i++) {
 
   button_div.setAttribute('class', 'local-button-container');
   individual_results_body[i].insertBefore(button_div, null);
-
 }
 
 // selecting the description, authors, and extra footer, they are arrays
@@ -45,7 +44,7 @@ function toggleLeastVisible(index) {
 
 function toggleDefault(index) {
   description[index].style.display = "block";
-  authors[index].style.display = "none";
+  authors[index].style.display = "block";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "none";
 }
@@ -152,7 +151,6 @@ function authorDOM (theUrl, index, response){
     output.innerHTML = label + ": " + value ;
     author_stats.appendChild(output);
   }
-
   author_profile.querySelector('div[id="gsc_prf"]').appendChild(author_stats);
   author_div[index].appendChild(author_profile);
 
