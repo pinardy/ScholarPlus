@@ -1,0 +1,12 @@
+div.spinner-container {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-color: #FAFAFA;
+}
+
+div.mdl-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

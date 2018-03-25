@@ -1,3 +1,9 @@
+// make all <br> disappear for alignment issues
+var all_br = document.getElementsByTagName("br");
+for (let i = 0; i < all_br.length; i++) {
+  all_br[i].style.display = "none";
+}
+
 // append a button container to each search result
 var individual_results_body = document.getElementsByClassName("gs_r");
 var append_author_box = document.getElementsByClassName("gs_ri");
@@ -60,25 +66,34 @@ function toggleMostVisible(index) {
 }
 
 var gs_ri = document.getElementsByClassName("gs_ri");
-function retrieveAuthorProfile(div, author, index, asynchronous){
+
+function retrieveAuthorProfile(div, author, index, asynchronous) {
   //Check if the Author Profile was already loaded, dont make extra copies
-  if (div.firstChild == null){
+  if (div.firstChild == null) {
     // Check for First Author Profile, add to view
-    if (author.firstChild.tagName == "A"){
+    if (author.firstChild.tagName == "A") {
       var xmlHttp = new XMLHttpRequest();
 
+      // create spinner
+      var progress_bar_container = document.createElement("div");
+      var progress_bar = document.createElement("div");
+      progress_bar.setAttribute("class", "progress");
+      progress_bar.innerHTML = "Loading";
+      progress_bar_container.appendChild(progress_bar);
+      progress_bar_container.setAttribute("class", "progress-bar-container");
+      author_div[index].appendChild(progress_bar_container);
+
       if (asynchronous == false) {
-        xmlHttp.open( "GET", author.firstChild, false);// false for sync
-        xmlHttp.send( null );
-        authorDOM(author.firstChild, index, xmlHttp.responseText)
-      }
-      else {
-        xmlHttp.open( "GET", author.firstChild, true);// true for async
-        xmlHttp.onreadystatechange = function() {
+        xmlHttp.open("GET", author.firstChild, false); // false for sync
+        xmlHttp.send(null);
+        authorDOM(author.firstChild, index, xmlHttp.responseText, progress_bar_container)
+      } else {
+        xmlHttp.open("GET", author.firstChild, true); // true for async
+        xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-            authorDOM(author.firstChild, index, xmlHttp.responseText)
+            authorDOM(author.firstChild, index, xmlHttp.responseText, progress_bar_container)
         }
-        xmlHttp.send( null );
+        xmlHttp.send(null);
       }
     }
     // No author profile, add default message
@@ -90,9 +105,9 @@ function retrieveAuthorProfile(div, author, index, asynchronous){
   }
 }
 
-function authorDOM (theUrl, index, response){
-  var parser=new DOMParser();
-  var htmlDoc=parser.parseFromString(response,"text/html");
+function authorDOM(theUrl, index, response, progress_bar) {
+  var parser = new DOMParser();
+  var htmlDoc = parser.parseFromString(response, "text/html");
   //OLD NAME/PROFILE PIC FORMAT
   // // Author Name
   // var author_format_name = document.createElement("h5");
@@ -111,21 +126,21 @@ function authorDOM (theUrl, index, response){
   // author_format_pic.appendChild(author_pic)
   // author_div[index].appendChild(author_format_pic);
 
-    // //Author's Articles (max 3)
-    // var author_format_article = document.createElement("div");
-    // author_format_article.setAttribute('class', 'local_author_article');
-    // author_format_article.innerHTML = "<b>Author's Top Publications</b>"
-  
-    // var author_article_body = htmlDoc.getElementsByClassName("gsc_a_at");
-    // var max_articles = 3
-    // var no_of_articles = Math.min(author_article_body.length, max_articles)
-    // for (var i = 0; i < no_of_articles; i++) {
-    //     var _div = document.createElement("div");
-    //     _div.setAttribute('class', 'local_author_article_');
-    //     _div.appendChild(author_article_body[i]);
-    //     author_format_article.appendChild(_div);
-    // }
-    // author_div[index].appendChild(author_format_article);
+  // //Author's Articles (max 3)
+  // var author_format_article = document.createElement("div");
+  // author_format_article.setAttribute('class', 'local_author_article');
+  // author_format_article.innerHTML = "<b>Author's Top Publications</b>"
+
+  // var author_article_body = htmlDoc.getElementsByClassName("gsc_a_at");
+  // var max_articles = 3
+  // var no_of_articles = Math.min(author_article_body.length, max_articles)
+  // for (var i = 0; i < no_of_articles; i++) {
+  //     var _div = document.createElement("div");
+  //     _div.setAttribute('class', 'local_author_article_');
+  //     _div.appendChild(author_article_body[i]);
+  //     author_format_article.appendChild(_div);
+  // }
+  // author_div[index].appendChild(author_format_article);
 
   //NEW NAME/PROFILE PIC FORMAT
   //Author Profile
@@ -148,7 +163,7 @@ function authorDOM (theUrl, index, response){
     var value = hidx_row.childNodes[1].innerHTML;
     var output = document.createElement("div");
     output.setAttribute('class', 'author_hidx');
-    output.innerHTML = label + ": " + value ;
+    output.innerHTML = label + ": " + value;
     author_stats.appendChild(output);
   }
   author_profile.querySelector('div[id="gsc_prf"]').appendChild(author_stats);
@@ -157,18 +172,18 @@ function authorDOM (theUrl, index, response){
   //Author's Articles (max 3)
   var author_format_article = document.createElement("div");
   author_format_article.setAttribute('class', 'local_author_article');
-  author_format_article.innerHTML = "<u><strong>Author's Top Publications</strong></u>";
+  author_format_article.innerHTML = "<strong>Author's Top Publications</strong>";
 
   var author_article_table = htmlDoc.getElementById("gsc_a_t");
   var author_articles = author_article_table.querySelector('tbody[id="gsc_a_b"]');
   var max_articles = 3;
-  if (author_articles.childElementCount > max_articles){
-    for (var i = author_articles.childElementCount-1; i >= max_articles; i--){
+  if (author_articles.childElementCount > max_articles) {
+    for (var i = author_articles.childElementCount - 1; i >= max_articles; i--) {
       author_article_table.querySelector('tbody[id="gsc_a_b"]').deleteRow(max_articles);
     }
   }
-
   author_format_article.appendChild(author_article_table);
   author_div[index].appendChild(author_format_article);
-}
 
+  progress_bar.style.display = "none";
+}

@@ -14,7 +14,7 @@ div.sort-row {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
 }
 
 div.adv-search-container {
