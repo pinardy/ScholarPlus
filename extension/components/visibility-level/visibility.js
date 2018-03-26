@@ -66,7 +66,7 @@ function toggleMostVisibleAll() {
 
 window.addEventListener("load", function mostStyleChange() {
   var location = window.location.href;
-  if (location[location.length - 1] === '5') {
+  if (location.match(/&num=5/g)) {
     for (var i = 0; i < description.length; i++) {
       description[i].style.display = "block";
     }
@@ -80,12 +80,12 @@ window.addEventListener("load", function mostStyleChange() {
       author_div[i].style.display = "block";
       retrieveAuthorProfile(author_div[i], authors[i], i, true);
     }
-  } else if (location[location.length - 2] === '1' && location[location.length - 1] === '0') {
+  } else if (location.match(/&num=20/g)) {
     for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "block";
+      description[i].style.display = "none";
     }
     for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "block";
+      authors[i].style.display = "none";
     }
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "none";
@@ -95,10 +95,10 @@ window.addEventListener("load", function mostStyleChange() {
     }
   } else {
     for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "none";
+      description[i].style.display = "block";
     }
     for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "none";
+      authors[i].style.display = "block";
     }
     for (var i = 0; i < extra_footer.length; i++) {
       extra_footer[i].style.display = "none";
