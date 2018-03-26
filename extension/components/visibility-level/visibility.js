@@ -27,6 +27,12 @@ var author_div = document.getElementsByClassName("local_author_container");
 
 function toggleLeastVisibleAll() {
   var location = window.location.href;
+
+  // Remove trailing #
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=20";
   window.location.replace(location);
@@ -34,6 +40,12 @@ function toggleLeastVisibleAll() {
 
 function toggleDefaultAll() {
   var location = window.location.href;
+
+  // Remove trailing #
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=10";
   window.location.replace(location);
@@ -41,6 +53,12 @@ function toggleDefaultAll() {
 
 function toggleMostVisibleAll() {
   var location = window.location.href;
+
+  // Remove trailing #
+  if (location.endsWith("#")) {
+    location = location.substring(0, location.length - 1)
+  }
+
   var location = location.replace(/&num=20|&num=10|&num=5/g, "");
   location += "&num=5";
   window.location.replace(location);

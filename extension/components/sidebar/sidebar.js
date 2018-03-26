@@ -90,7 +90,7 @@ function popupAdvancedSearch() {
   // Replaces trailing "==#"
   if (location.includes("==#")) {
     console.log("contains ==#")
-    location = location.replace(/==#/g, " ");
+    location = location.substring(0, location.length - 3)
   }
   // Replaces trailing "=#"
   if (location.includes("=#")) {
