@@ -33,6 +33,10 @@ for (var i = 0; i < individual_results_body.length; i++) {
 
   button_div.setAttribute('class', 'local-button-container');
   individual_results_body[i].insertBefore(button_div, null);
+
+  // append <hr> to each individual_results_body[i]
+  var hr = document.createElement("hr");
+  individual_results_body[i].insertAdjacentElement("afterend", hr);
 }
 
 // selecting the description, authors, and extra footer, they are arrays
