@@ -9,6 +9,7 @@ button.footer-button {
 
 div.footer-container {
     display: flex;
+    align-items: center;
 }
 
 div.citations-container {

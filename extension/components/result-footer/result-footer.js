@@ -73,7 +73,6 @@ for (var i = 0; i < individual_results_body.length; i++) {
     }
   }
   no_of_citations_div.appendChild(no_of_citations);
-
   var current_download_buttons = individual_results_body[i].getElementsByClassName("gs_or_ggsm");
   if (current_download_buttons.length > 0) {
     // create download button
@@ -92,10 +91,10 @@ for (var i = 0; i < individual_results_body.length; i++) {
     footer_div.appendChild(download_button);
   }
 
-
+  footer_div.appendChild(no_of_citations_div);
   var indiv_block = document.getElementsByClassName("gs_ri");
   indiv_block[i].insertBefore(footer_div, null);
-  indiv_block[i].insertBefore(no_of_citations_div, null);
+  // indiv_block[i].insertBefore(no_of_citations_div, null);
 }
 
 function openDownloadTab(url) {

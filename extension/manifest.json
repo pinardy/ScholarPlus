@@ -7,8 +7,8 @@
     "default_icon": "icon16.png"
   },
   "content_scripts": [{
-    "css": ["/components/loader/loader.css", "styles.css", "/components/visibility-level/visibility.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css", "/components/result-footer/result-footer.css"],
-    "js": ["/components/loader/loader.js", "materialdesign.js","/components/visibility-level/visibility.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js", "/components/result-footer/result-footer.js"],
+    "css": ["/components/loader/loader.css", "styles.css", "/components/visibility-level/visibility.css", "/components/result-footer/result-footer.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css"],
+    "js": ["/components/loader/loader.js", "materialdesign.js", "/components/visibility-level/visibility.js", "/components/result-footer/result-footer.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js"],
     "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
@@ -18,7 +18,7 @@
     "assets/js/*",
     "assets/fonts/*",
     "*.png",
-    "*.PNG"    
+    "*.PNG"
   ],
   "background": {
     "scripts": ["materialdesign.js"],
