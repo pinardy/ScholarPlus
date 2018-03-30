@@ -1,13 +1,19 @@
-// make all <br> disappear for alignment issues
+// make all <br> disappear for alignment issues in description
 var all_br = document.getElementsByTagName("br");
 for (let i = 0; i < all_br.length; i++) {
   all_br[i].style.display = "none";
+}
+var all_results = document.getElementsByClassName("gs_r");
+for (let i = 0; i < all_results.length; i++) {
+  // append <hr> to each individual_results_body[i]
+  var hr = document.createElement("hr");
+  all_results[i].insertAdjacentElement("afterend", hr);
 }
 
 // append a button container to each search result
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 var append_author_box = document.getElementsByClassName("gs_ri");
-for (var i = 0; i < individual_results_body.length; i++) {
+for (let i = 0; i < individual_results_body.length; i++) {
   //Create Empty Author div (to be toggled across views)
   var author_div = document.createElement("div");
   author_div.setAttribute('class', 'local_author_container');
@@ -33,10 +39,6 @@ for (var i = 0; i < individual_results_body.length; i++) {
 
   button_div.setAttribute('class', 'local-button-container');
   individual_results_body[i].insertBefore(button_div, null);
-
-  // append <hr> to each individual_results_body[i]
-  var hr = document.createElement("hr");
-  individual_results_body[i].insertAdjacentElement("afterend", hr);
 
   // check if the result have description, to prevent screwing up the indexing later on
   var indiv_description = individual_results_body[i].getElementsByClassName("gs_rs");
