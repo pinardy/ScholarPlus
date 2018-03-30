@@ -1,10 +1,15 @@
-button.footer-button {
+button.mdl-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     max-width: 30%;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+button.footer-button i.material-icons {
+    margin: 0;
 }
 
 div.footer-container {
@@ -16,3 +21,13 @@ div.citations-container {
     display: flex;
     flex-direction: column;
 }
+/* div.citations-container span {
+    text-align: center;
+    width: 300%;
+    font-size: 1rem;
+} */
+/* h3.gs_rt {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+} */
