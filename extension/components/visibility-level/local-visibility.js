@@ -5,7 +5,7 @@ for (let i = 0; i < all_br.length; i++) {
 }
 
 // append a button container to each search result
-var individual_results_body = document.getElementsByClassName("gs_r");
+var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 var append_author_box = document.getElementsByClassName("gs_ri");
 for (var i = 0; i < individual_results_body.length; i++) {
   //Create Empty Author div (to be toggled across views)
@@ -37,6 +37,14 @@ for (var i = 0; i < individual_results_body.length; i++) {
   // append <hr> to each individual_results_body[i]
   var hr = document.createElement("hr");
   individual_results_body[i].insertAdjacentElement("afterend", hr);
+
+  // check if the result have description, to prevent screwing up the indexing later on
+  var indiv_description = individual_results_body[i].getElementsByClassName("gs_rs");
+  if (indiv_description.length == 0) {
+    var empty_description = document.createElement("div");
+    empty_description.setAttribute("class", "gs_rs");
+    individual_results_body[i].appendChild(empty_description);
+  }
 }
 
 // selecting the description, authors, and extra footer, they are arrays

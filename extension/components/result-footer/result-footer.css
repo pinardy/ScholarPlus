@@ -3,6 +3,7 @@ button.mdl-button {
   align-items: center;
   justify-content: center;
   max-width: 30%;
+  margin-right: 0.2rem;
 }
 
 button.footer-button i.material-icons {

@@ -10,7 +10,7 @@ div.local_author_container {
 /* div#gs_res_ccl {
   max-width: 100vw;
 } */
-div.gs_r {
+div.gs_r.gs_or.gs_scl {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
