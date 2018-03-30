@@ -1,33 +1,25 @@
 button.mdl-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 30%;
-    margin-right: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 30%;
 }
 
 button.footer-button i.material-icons {
-    margin: 0;
+  margin: 0;
 }
 
 div.footer-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.footer-container div.footer-button-container {
+  display: flex;
 }
 
 div.citations-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-/* div.citations-container span {
-    text-align: center;
-    width: 300%;
-    font-size: 1rem;
-} */
-/* h3.gs_rt {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-} */
