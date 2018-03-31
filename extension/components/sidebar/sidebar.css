@@ -2,6 +2,11 @@ div#gs_bdy_sb {
     /* display: flex; */
     /* justify-content: center; */
 }
+
+ul.gs_bdy_sb_sec {
+  display: none;
+}
+
 div.sidebar-container {
   display: flex;
   flex-direction: column;
