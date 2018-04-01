@@ -103,21 +103,21 @@ sinceTime_div.appendChild(since2017Button);
 sinceTime_div.appendChild(since2014Button);
 
 // div for 'create alert' title
-// var create_alert_span = document.createElement("span");
-// var alertIcon = document.createElement("i");
-// alertIcon.setAttribute("class", "material-icons")
-// alertIcon.innerHTML = "message";
-// create_alert_span.appendChild(alertIcon);
-// create_alert_text = document.createElement("span");
-// create_alert_text.innerHTML = "Create alert";
-// create_alert_span.appendChild(create_alert_text);
+var create_alert_span = document.createElement("span");
+var alertIcon = document.createElement("i");
+alertIcon.setAttribute("class", "material-icons")
+alertIcon.innerHTML = "email";
+create_alert_span.appendChild(alertIcon);
+create_alert_text = document.createElement("span");
+create_alert_text.innerHTML = "Alert me";
+create_alert_span.appendChild(create_alert_text);
 
 // create alert div
 var createAlert_div = document.createElement("div");
 var createAlertButton = document.createElement("button");
 createAlertButton.addEventListener("click", createAlert)
-createAlertButton.innerHTML = "Create alert";
-// createAlert_div.appendChild(create_alert_span);
+createAlertButton.innerHTML = "Alert";
+createAlert_div.appendChild(create_alert_span);
 createAlert_div.appendChild(createAlertButton);
 
 
@@ -297,5 +297,23 @@ function changeToSince2014() {
 }
 
 function createAlert() {
+  var location = window.location.href;
+  
+  // Extract search query
+  if (location.includes("&q=")) {
+    var startIndex = location.indexOf("&q=")
+    for (i=startIndex+4; i<location.length; i++) { 
+      if (location.charAt(i) == "&") {
+        var endIndex = i
+        break
+      }
+    }
+    console.log("startIndex:", startIndex) 
+    console.log("endIndex:", endIndex) 
+    var searchQuery = location.substring(startIndex+3, endIndex)
+  }
 
+  // Replace href with create alert with search query inside
+  newLocation = "https://scholar.google.com.sg/scholar_alerts?view_op=create_alert_options&hl=en&alert_query=" + searchQuery
+  window.location.replace(newLocation)
 }
