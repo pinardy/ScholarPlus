@@ -3,6 +3,10 @@ div#gs_bdy_sb {
     /* justify-content: center; */
 }
 
+div#gs_bdy_sb_in {
+  display: none;
+}
+
 ul.gs_bdy_sb_sec {
   display: none;
 }
