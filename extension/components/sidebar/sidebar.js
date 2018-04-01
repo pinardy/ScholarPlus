@@ -111,6 +111,7 @@ create_alert_span.appendChild(alertIcon);
 create_alert_text = document.createElement("span");
 create_alert_text.innerHTML = "Alert me";
 create_alert_span.appendChild(create_alert_text);
+create_alert_span.setAttribute("class", "title");
 
 // create alert div
 var createAlert_div = document.createElement("div");
@@ -119,6 +120,7 @@ createAlertButton.addEventListener("click", createAlert)
 createAlertButton.innerHTML = "Alert";
 createAlert_div.appendChild(create_alert_span);
 createAlert_div.appendChild(createAlertButton);
+createAlert_div.setAttribute("class", "alert-container");
 
 
 // horizontal lines as separators
@@ -214,18 +216,17 @@ function sinceButtonStyleChecker() {
   if (location.includes("scholar?as_ylo=2018")) {
     since2018Button.style.background = "rgb(76,142,251)";
     since2018Button.style.color = "white";
-  } 
+  }
   // Since 2017
   if (location.includes("scholar?as_ylo=2017")) {
     since2017Button.style.background = "rgb(76,142,251)";
     since2017Button.style.color = "white";
-  } 
+  }
   // Since 2014
   if (location.includes("scholar?as_ylo=2014")) {
     since2014Button.style.background = "rgb(76,142,251)";
     since2014Button.style.color = "white";
-  } 
-  else {
+  } else {
     relevance_button.style.background = "rgb(76,142,251)";
     relevance_button.style.color = "white";
   }
@@ -298,19 +299,19 @@ function changeToSince2014() {
 
 function createAlert() {
   var location = window.location.href;
-  
+
   // Extract search query
   if (location.includes("&q=")) {
     var startIndex = location.indexOf("&q=")
-    for (i=startIndex+4; i<location.length; i++) { 
+    for (i = startIndex + 4; i < location.length; i++) {
       if (location.charAt(i) == "&") {
         var endIndex = i
         break
       }
     }
-    console.log("startIndex:", startIndex) 
-    console.log("endIndex:", endIndex) 
-    var searchQuery = location.substring(startIndex+3, endIndex)
+    console.log("startIndex:", startIndex)
+    console.log("endIndex:", endIndex)
+    var searchQuery = location.substring(startIndex + 3, endIndex)
   }
 
   // Replace href with create alert with search query inside

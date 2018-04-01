@@ -1,6 +1,6 @@
 div#gs_bdy_sb {
-    /* display: flex; */
-    /* justify-content: center; */
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
 div#gs_bdy_sb_in {
@@ -23,7 +23,7 @@ div.sort-row {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 div.adv-search-container {
@@ -38,4 +38,9 @@ span.title {
 
 i {
   margin-right: 0.5rem;
+}
+
+div.alert-container {
+  display: flex;
+  flex-direction: column;
 }
