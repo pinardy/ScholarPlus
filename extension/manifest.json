@@ -17,8 +17,8 @@
     "assets/css/*",
     "assets/js/*",
     "assets/fonts/*",
-    "*.png",
-    "*.PNG"
+    "*.svg",
+    "*.SVG"
   ],
   "background": {
     "scripts": ["materialdesign.js"],
