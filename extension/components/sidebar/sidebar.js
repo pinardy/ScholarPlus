@@ -1,24 +1,3 @@
-// div for the advanced search
-var adv_search_div = document.createElement("div");
-var adv_search_span = document.createElement("span");
-var magnifying_glass = document.createElement("i");
-magnifying_glass.setAttribute("class", "material-icons")
-magnifying_glass.innerHTML = "search";
-adv_search_span.appendChild(magnifying_glass);
-adv_search_text = document.createElement("span");
-adv_search_text.innerHTML = "Advanced Search";
-adv_search_span.appendChild(adv_search_text);
-
-adv_search_div.appendChild(adv_search_span);
-
-var adv_search = document.createElement("button");
-adv_search.innerHTML = "Search Now";
-adv_search.addEventListener("click", popupAdvancedSearch)
-// adv_search.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary");
-adv_search_div.appendChild(adv_search);
-adv_search_div.setAttribute('class', 'adv-search-container');
-adv_search_span.setAttribute('class', 'title');
-
 // div for the sort
 var sort_div = document.createElement("div");
 var sort_span = document.createElement("span");
@@ -30,33 +9,35 @@ var sort_text = document.createElement("span");
 sort_text.innerHTML = "Sort by";
 sort_span.appendChild(sort_text);
 
-sort_div.appendChild(sort_span);
+// sort_div.appendChild(sort_span);
 sort_div.setAttribute('class', 'sort-container');
 sort_span.setAttribute('class', 'title');
 
-// Relevance div
-var row_div1 = document.createElement("div");
-row_div1.setAttribute('class', 'sort-row');
+var relevance_checkbox_label = document.createElement("label");
+var relevance_checkbox_input = document.createElement("input");
+var relevance_checkbox_span = document.createElement("span");
+relevance_checkbox_label.setAttribute("class", "material-checkbox");
+relevance_checkbox_input.setAttribute("type", "checkbox");
+relevance_checkbox_input.addEventListener("click", changeToRelevance);
+relevance_checkbox_span.innerHTML = "Relevance";
+relevance_checkbox_label.appendChild(relevance_checkbox_input);
+relevance_checkbox_label.appendChild(relevance_checkbox_span);
+sort_div.appendChild(relevance_checkbox_label);
 
-var relevance_button = document.createElement("button");
-relevance_button.addEventListener("click", changeToRelevance)
-relevance_button.innerHTML = "Relevance";
+// date checkbox
+var date_checkbox_label = document.createElement("label");
+var date_checkbox_input = document.createElement("input");
+var date_checkbox_span = document.createElement("span");
+date_checkbox_label.setAttribute("class", "material-checkbox");
+date_checkbox_input.setAttribute("type", "checkbox");
+date_checkbox_input.addEventListener("click", changeToDate);
+date_checkbox_span.innerHTML = "Date";
+date_checkbox_label.appendChild(date_checkbox_input);
+date_checkbox_label.appendChild(date_checkbox_span);
+sort_div.appendChild(date_checkbox_label);
 
-row_div1.appendChild(relevance_button);
-sort_div.appendChild(row_div1);
+actionCheckboxStyleChecker();
 
-// Date div
-var row_div2 = document.createElement("div");
-row_div2.setAttribute('class', 'sort-row');
-var date_button = document.createElement("button");
-date_button.addEventListener("click", changeToDate)
-date_button.innerHTML = "Date";
-
-// Edits styling of filter buttons accordingly
-buttonStyleChecker();
-
-row_div2.appendChild(date_button);
-sort_div.appendChild(row_div2);
 
 // Div for 'Since' title
 var sinceTitle_div = document.createElement("div");
@@ -75,74 +56,101 @@ since_span.setAttribute('class', 'title');
 
 // Since time div
 var sinceTime_div = document.createElement("div");
-sinceTime_div.setAttribute('class', 'sort-row');
+sinceTime_div.setAttribute('class', 'since-time-container');
 
-var anyTimeButton = document.createElement("button");
-anyTimeButton.addEventListener("click", changeToAnyTime)
-anyTimeButton.innerHTML = "Any time";
+// creating the checkboxes for "since"
 
-var since2018Button = document.createElement("button");
-since2018Button.addEventListener("click", changeToSince2018)
-since2018Button.innerHTML = "Since 2018";
+var anytime_checkbox_label = document.createElement("label");
+var anytime_checkbox_input = document.createElement("input");
+var anytime_checkbox_span = document.createElement("span");
+anytime_checkbox_label.setAttribute("class", "material-checkbox");
+anytime_checkbox_input.setAttribute("type", "checkbox");
+anytime_checkbox_input.addEventListener("click", changeToAnyTime);
+anytime_checkbox_span.innerHTML = "Anytime";
+anytime_checkbox_label.appendChild(anytime_checkbox_input);
+anytime_checkbox_label.appendChild(anytime_checkbox_span);
+sinceTime_div.appendChild(anytime_checkbox_label);
 
-var since2017Button = document.createElement("button");
-since2017Button.addEventListener("click", changeToSince2017)
-since2017Button.innerHTML = "Since 2017";
+var since2018_checkbox_label = document.createElement("label");
+var since2018_checkbox_input = document.createElement("input");
+var since2018_checkbox_span = document.createElement("span");
+since2018_checkbox_label.setAttribute("class", "material-checkbox");
+since2018_checkbox_input.setAttribute("type", "checkbox");
+since2018_checkbox_input.addEventListener("click", changeToSince2018);
+since2018_checkbox_span.innerHTML = "Since 2018";
+since2018_checkbox_label.appendChild(since2018_checkbox_input);
+since2018_checkbox_label.appendChild(since2018_checkbox_span);
+sinceTime_div.appendChild(since2018_checkbox_label);
 
-var since2014Button = document.createElement("button");
-since2014Button.addEventListener("click", changeToSince2014)
-since2014Button.innerHTML = "Since 2014";
+var since2017_checkbox_label = document.createElement("label");
+var since2017_checkbox_input = document.createElement("input");
+var since2017_checkbox_span = document.createElement("span");
+since2017_checkbox_label.setAttribute("class", "material-checkbox");
+since2017_checkbox_input.setAttribute("type", "checkbox");
+since2017_checkbox_input.addEventListener("click", changeToSince2017);
+since2017_checkbox_span.innerHTML = "Since 2017";
+since2017_checkbox_label.appendChild(since2017_checkbox_input);
+since2017_checkbox_label.appendChild(since2017_checkbox_span);
+sinceTime_div.appendChild(since2017_checkbox_label);
 
-// Edits the styling of the since buttons accordingly
-sinceButtonStyleChecker()
 
-sinceTime_div.appendChild(since_span);
-sinceTime_div.appendChild(anyTimeButton);
-sinceTime_div.appendChild(since2018Button);
-sinceTime_div.appendChild(since2017Button);
-sinceTime_div.appendChild(since2014Button);
+var since2014_checkbox_label = document.createElement("label");
+var since2014_checkbox_input = document.createElement("input");
+var since2014_checkbox_span = document.createElement("span");
+since2014_checkbox_label.setAttribute("class", "material-checkbox");
+since2014_checkbox_input.setAttribute("type", "checkbox");
+since2014_checkbox_input.addEventListener("click", changeToSince2014);
+since2014_checkbox_span.innerHTML = "Since 2014";
+since2014_checkbox_label.appendChild(since2014_checkbox_input);
+since2014_checkbox_label.appendChild(since2014_checkbox_span);
+sinceTime_div.appendChild(since2014_checkbox_label);
 
-// div for 'create alert' title
-var create_alert_span = document.createElement("span");
+// set the ticked thing
+sinceCheckboxStyleChecker();
+
+// div for action buttons
+var action_div = document.createElement("div");
+action_div.setAttribute("class", "action-container");
+
+// adv search button
+var adv_search = document.createElement("button");
+var magnifying_glass = document.createElement("i");
+magnifying_glass.setAttribute("class", "material-icons")
+magnifying_glass.innerHTML = "search";
+adv_search.appendChild(magnifying_glass);
+var adv_search_text = document.createElement("span");
+adv_search_text.innerHTML = "Advanced Search";
+adv_search.appendChild(adv_search_text);
+adv_search.addEventListener("click", popupAdvancedSearch)
+action_div.appendChild(adv_search);
+
+// alert button
+var createAlertButton = document.createElement("button");
+createAlertButton.addEventListener("click", createAlert)
 var alertIcon = document.createElement("i");
 alertIcon.setAttribute("class", "material-icons")
 alertIcon.innerHTML = "email";
-create_alert_span.appendChild(alertIcon);
-create_alert_text = document.createElement("span");
-create_alert_text.innerHTML = "Alert me";
-create_alert_span.appendChild(create_alert_text);
-create_alert_span.setAttribute("class", "title");
-
-// create alert div
-var createAlert_div = document.createElement("div");
-var createAlertButton = document.createElement("button");
-createAlertButton.addEventListener("click", createAlert)
-createAlertButton.innerHTML = "Alert";
-createAlert_div.appendChild(create_alert_span);
-createAlert_div.appendChild(createAlertButton);
-createAlert_div.setAttribute("class", "alert-container");
-
+createAlertButton.appendChild(alertIcon);
+var alert_text = document.createElement("span");
+alert_text.innerHTML = "Alert Me";
+createAlertButton.appendChild(alert_text);
+action_div.appendChild(createAlertButton);
 
 // horizontal lines as separators
 var hr = document.createElement("hr");
 hr.style.height = '100%';
 hr.style.width = '100%';
-var hr2 = document.createElement("hr");
-hr2.style.height = '100%';
-hr2.style.width = '100%';
-var hr3 = document.createElement("hr");
-hr3.style.height = '100%';
-hr3.style.width = '100%';
 
 // append all child into sidebar_div parent div
 var sidebar_div = document.createElement("div");
-sidebar_div.appendChild(adv_search_div);
+
+sidebar_div.appendChild(sort_span);
+sidebar_div.appendChild(sort_div);
+sidebar_div.appendChild(since_span);
+sidebar_div.appendChild(sinceTime_div);
 sidebar_div.appendChild(hr);
-sidebar_div.appendChild(sort_div)
-sidebar_div.appendChild(hr2);
-sidebar_div.appendChild(sinceTime_div)
-sidebar_div.appendChild(hr3);
-sidebar_div.appendChild(createAlert_div)
+// sidebar_div.appendChild(adv_search_div);
+sidebar_div.appendChild(action_div);
 sidebar_div.setAttribute('class', 'sidebar-container');
 
 // link to incorporate google material icon
@@ -173,6 +181,8 @@ function popupAdvancedSearch() {
 }
 
 function changeToRelevance() {
+  date_checkbox_input.checked = false;
+  relevance_checkbox_input.checked = true;
   var location = window.location.href;
   if (location.includes("&scisbd=1")) {
     location = location.replace(/&scisbd=1/g, "");
@@ -184,6 +194,8 @@ function changeToRelevance() {
 }
 
 function changeToDate() {
+  date_checkbox_input.checked = true;
+  relevance_checkbox_input.checked = false;
   var location = window.location.href;
   if (!location.includes("&scisbd=1")) {
     location += "&scisbd=1"
@@ -194,45 +206,57 @@ function changeToDate() {
   window.location.replace(location)
 }
 
-function buttonStyleChecker() {
+function actionCheckboxStyleChecker() {
   var location = window.location.href;
   if (location.includes("&scisbd=1")) {
-    date_button.style.background = "rgb(76,142,251)";
-    date_button.style.color = "white";
+    date_checkbox_input.checked = true;
   } else {
-    relevance_button.style.background = "rgb(76,142,251)";
-    relevance_button.style.color = "white";
+    relevance_checkbox_input.checked = true;
   }
 }
 
-function sinceButtonStyleChecker() {
+function sinceCheckboxStyleChecker() {
   var location = window.location.href;
   // Since any time
   if (location.includes("scholar?hl=en")) {
-    anyTimeButton.style.background = "rgb(76,142,251)";
-    anyTimeButton.style.color = "white";
+    anytime_checkbox_input.checked = true;
+    since2018_checkbox_input.checked = false;
+    since2017_checkbox_input.checked = false;
+    since2014_checkbox_input.checked = false;
   }
   // Since 2018
   if (location.includes("scholar?as_ylo=2018")) {
-    since2018Button.style.background = "rgb(76,142,251)";
-    since2018Button.style.color = "white";
+    anytime_checkbox_input.checked = false;
+    since2018_checkbox_input.checked = true;
+    since2017_checkbox_input.checked = false;
+    since2014_checkbox_input.checked = false;
   }
   // Since 2017
-  if (location.includes("scholar?as_ylo=2017")) {
-    since2017Button.style.background = "rgb(76,142,251)";
-    since2017Button.style.color = "white";
+  else if (location.includes("scholar?as_ylo=2017")) {
+    anytime_checkbox_input.checked = false;
+    since2018_checkbox_input.checked = false;
+    since2017_checkbox_input.checked = true;
+    since2014_checkbox_input.checked = false;
   }
   // Since 2014
-  if (location.includes("scholar?as_ylo=2014")) {
-    since2014Button.style.background = "rgb(76,142,251)";
-    since2014Button.style.color = "white";
+  else if (location.includes("scholar?as_ylo=2014")) {
+    anytime_checkbox_input.checked = false;
+    since2018_checkbox_input.checked = false;
+    since2017_checkbox_input.checked = false;
+    since2014_checkbox_input.checked = true;
   } else {
-    relevance_button.style.background = "rgb(76,142,251)";
-    relevance_button.style.color = "white";
+    anytime_checkbox_input.checked = true;
+    since2018_checkbox_input.checked = false;
+    since2017_checkbox_input.checked = false;
+    since2014_checkbox_input.checked = false;
   }
 }
 
 function changeToAnyTime() {
+  anytime_checkbox_input.checked = true;
+  since2018_checkbox_input.checked = false;
+  since2017_checkbox_input.checked = false;
+  since2014_checkbox_input.checked = false;
   var location = window.location.href;
   if (location.includes("scholar?as_ylo=2018")) {
     var location = location.replace("scholar?as_ylo=2018", "scholar?hl=en");
@@ -247,6 +271,10 @@ function changeToAnyTime() {
 }
 
 function changeToSince2018() {
+  anytime_checkbox_input.checked = false;
+  since2018_checkbox_input.checked = true;
+  since2017_checkbox_input.checked = false;
+  since2014_checkbox_input.checked = false;
   var location = window.location.href;
   if (location.includes("scholar?hl=en")) {
     // stuff as_ylo=2018 in between scholar? and the rest
@@ -264,6 +292,10 @@ function changeToSince2018() {
 }
 
 function changeToSince2017() {
+  anytime_checkbox_input.checked = false;
+  since2018_checkbox_input.checked = false;
+  since2017_checkbox_input.checked = true;
+  since2014_checkbox_input.checked = false;
   var location = window.location.href;
   if (location.includes("scholar?hl=en")) {
     // stuff as_ylo=2018 in between scholar? and the rest
@@ -281,6 +313,10 @@ function changeToSince2017() {
 }
 
 function changeToSince2014() {
+  anytime_checkbox_input.checked = false;
+  since2018_checkbox_input.checked = false;
+  since2017_checkbox_input.checked = false;
+  since2014_checkbox_input.checked = true;
   var location = window.location.href;
   if (location.includes("scholar?hl=en")) {
     // stuff as_ylo=2018 in between scholar? and the rest

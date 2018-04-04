@@ -1,3 +1,13 @@
 h3.gs_rt {
   margin: 0;
 }
+
+div.local-button-container {
+  /* display: none !important; */
+}
+div.citations-container {
+  /* display: none !important; */
+}
+hr.local-result-hr {
+  margin: 0 !important;
+}

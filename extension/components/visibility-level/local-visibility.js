@@ -7,6 +7,7 @@ var all_results = document.getElementsByClassName("gs_r");
 for (let i = 0; i < all_results.length; i++) {
   // append <hr> to each individual_results_body[i]
   var hr = document.createElement("hr");
+  hr.setAttribute("class", "local-result-hr");
   all_results[i].insertAdjacentElement("afterend", hr);
 }
 
