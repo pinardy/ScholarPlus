@@ -11,6 +11,22 @@ for (let i = 0; i < all_results.length; i++) {
   all_results[i].insertAdjacentElement("afterend", hr);
 }
 
+//Add author related article js
+var script = document.createElement("script");
+script.type = 'text/javascript';
+script.innerHTML = 'function myJsFunc(link){\
+  console.log(link);\
+  var xmlHttp = new XMLHttpRequest();\
+  xmlHttp.open("GET", link, false);\
+  xmlHttp.send(null);\
+  var parser = new DOMParser();\
+  var htmlDoc = parser.parseFromString(xmlHttp.responseText, "text/html");\
+  console.log(htmlDoc);\
+  link = htmlDoc.getElementsByClassName("gsc_vcd_title_link")[0].href;\
+  window.location.href = link;\
+}';
+document.head.appendChild(script);
+
 // append a button container to each search result
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 var append_author_box = document.getElementsByClassName("gs_ri");
@@ -192,10 +208,18 @@ function authorDOM(theUrl, index, response, progress_bar) {
   var author_article_table = htmlDoc.getElementById("gsc_a_t");
   var author_articles = author_article_table.querySelector('tbody[id="gsc_a_b"]');
   var max_articles = 3;
+  //Delete extra articles
   if (author_articles.childElementCount > max_articles) {
     for (var i = author_articles.childElementCount - 1; i >= max_articles; i--) {
       author_article_table.querySelector('tbody[id="gsc_a_b"]').deleteRow(max_articles);
     }
+  }
+  //Modify article attributes
+  for (var i = 0; i < author_article_table.querySelector('tbody[id="gsc_a_b"]').childElementCount; i++){
+    var author_article_href = author_article_table.querySelector('tbody[id="gsc_a_b"]').childNodes[i].firstChild.firstChild;
+    var author_article_link = 'https://scholar.google.com'+ author_article_href.getAttribute('data-href');
+    author_article_href.href = 'javascript:void(0)';
+    author_article_href.setAttribute('onclick',"myJsFunc('"+ author_article_link +"');");
   }
   author_format_article.appendChild(author_article_table);
   author_div[index].appendChild(author_format_article);
