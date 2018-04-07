@@ -1,5 +1,6 @@
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 var tooltip_counter = 1;
+
 for (var i = 0; i < individual_results_body.length; i++) {
   // create footer div
   var footer_div = document.createElement("div");
@@ -9,7 +10,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
 
   // create number of citations span
   var all_anchors = individual_results_body[i].getElementsByTagName("a");
-  for (let i = 0; i < all_anchors.length; i++) {
+  for (let j = 0; j < all_anchors.length; j++) {
 
     // create save to lib button
     var save_to_library_button = document.createElement("button");
@@ -17,9 +18,9 @@ for (var i = 0; i < individual_results_body.length; i++) {
     library_icon.setAttribute("class", "material-icons");
     library_icon.innerHTML = "star";
     save_to_library_button.appendChild(library_icon);
-    save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library");
+    save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library gs_or_sav");
 
-    if (all_anchors[i].className == "gs_or_sav") {
+    if (all_anchors[j].className == "gs_or_sav") {
       // reading the href of save to lib
       var tooltip_number = "tt" + tooltip_counter;
       save_to_library_button.setAttribute("id", tooltip_number);
@@ -29,8 +30,9 @@ for (var i = 0; i < individual_results_body.length; i++) {
       tooltip1.innerHTML = "Save to Library";
       footer_button_div.appendChild(tooltip1);
       tooltip_counter += 1;
-
-      save_to_library_button.addEventListener("click", saveToLibrary.bind(null, all_anchors[i].href));
+      
+      //TODO: the button display should be dependent on whether the article is saved in the library
+      // save_to_library_button.addEventListener("click", saveToLibrary.bind(null, all_anchors[j].href));
       footer_button_div.appendChild(save_to_library_button);
     } else {
       save_to_library_button.disabled = true;
@@ -41,9 +43,11 @@ for (var i = 0; i < individual_results_body.length; i++) {
     quote_icon.setAttribute("class", "material-icons")
     quote_icon.innerHTML = "format_quote";
     generate_citation_button.appendChild(quote_icon);
-    generate_citation_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon generate-citation");
+    generate_citation_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon generate-citation gs_or_cit gs_nph");
+    generate_citation_button.id = i;
+    
 
-    if (all_anchors[i].className == "gs_or_cit gs_nph") {
+    if (all_anchors[j].className == "gs_or_cit gs_nph") {
       // reading the href of generating citations
       var tooltip_number = "tt" + tooltip_counter;
       generate_citation_button.setAttribute("id", tooltip_number);
@@ -54,19 +58,18 @@ for (var i = 0; i < individual_results_body.length; i++) {
       footer_button_div.appendChild(tooltip2);
       tooltip_counter += 1;
 
-      generate_citation_button.addEventListener("click", generateCitation.bind(null, all_anchors[i].href));
       footer_button_div.appendChild(generate_citation_button);
     } else {
       // create disabled generate citation button
       generate_citation_button.disabled = true;
     }
     // reading the number of citations
-    if (all_anchors[i].innerHTML.match(/Cited/g)) {
+    if (all_anchors[j].innerHTML.match(/Cited/g)) {
 
       var no_of_citations_div = document.createElement("div");
       var no_of_citations = document.createElement("span");
       no_of_citations_div.setAttribute("class", "citations-container");
-      no_of_citations.innerHTML = all_anchors[i].innerHTML;
+      no_of_citations.innerHTML = all_anchors[j].innerHTML;
       no_of_citations_div.appendChild(no_of_citations);
     } 
     // create versions button
@@ -77,7 +80,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
     versions_button.appendChild(versions_icon);
     versions_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon versions");
 
-    if (all_anchors[i].className == "gs_nph") {
+    if (all_anchors[j].className == "gs_nph") {
       // reading the number of versions
       var tooltip_number = "tt" + tooltip_counter;
 
@@ -85,10 +88,10 @@ for (var i = 0; i < individual_results_body.length; i++) {
       var tooltip3 = document.createElement("div");
       tooltip3.setAttribute("class", "mdl-tooltip");
       tooltip3.setAttribute("for", tooltip_number);
-      tooltip3.innerHTML = all_anchors[i].innerHTML;
+      tooltip3.innerHTML = all_anchors[j].innerHTML;
       footer_button_div.appendChild(tooltip3);
 
-      versions_button.addEventListener("click", readOtherVersions.bind(null, all_anchors[i].href));
+      versions_button.addEventListener("click", readOtherVersions.bind(null, all_anchors[j].href));
       tooltip_counter += 1;
       footer_button_div.appendChild(versions_button);
     } else {
@@ -138,7 +141,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
       library_icon.setAttribute("class", "material-icons");
       library_icon.innerHTML = "star";
       save_to_library_button.appendChild(library_icon);
-      save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library");
+      save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library gs_or_sav");
       save_to_library_button.disabled = true;
       buttons_in_footer[0].insertAdjacentElement("beforebegin", save_to_library_button);
     }
@@ -185,14 +188,4 @@ function openDownloadTab(url) {
 
 function readOtherVersions(url) {
   window.location.replace(url);
-}
-
-function generateCitation(url) {
-  console.log(url);
-  window.open(url);
-}
-
-function saveToLibrary(url) {
-  console.log(url);
-  window.open(url);
 }

@@ -38,7 +38,6 @@ sort_div.appendChild(date_checkbox_label);
 
 actionCheckboxStyleChecker();
 
-
 // Div for 'Since' title
 var sinceTitle_div = document.createElement("div");
 var since_span = document.createElement("span");
@@ -121,6 +120,7 @@ adv_search.appendChild(magnifying_glass);
 var adv_search_text = document.createElement("span");
 adv_search_text.innerHTML = "Advanced Search";
 adv_search.appendChild(adv_search_text);
+adv_search.setAttribute("id", "gs_res_drw_adv");
 adv_search.addEventListener("click", popupAdvancedSearch)
 action_div.appendChild(adv_search);
 
@@ -162,23 +162,6 @@ document.getElementsByTagName("head")[0].appendChild(link);
 // append to the google scholar sidebar
 var advSearch = document.getElementById("gs_bdy_sb");
 advSearch.insertBefore(sidebar_div, advSearch.childNodes[0]);
-
-function popupAdvancedSearch() {
-  var location = window.location.href;
-
-  // Replaces trailing "==#"
-  if (location.includes("==#")) {
-    console.log("contains ==#")
-    location = location.substring(0, location.length - 3)
-  }
-  // Replaces trailing "=#"
-  if (location.includes("=#")) {
-    console.log("contains =#")
-    location = location.replace(/=#/g, " ");
-  }
-  location += "=#d=gs_asd";
-  window.location = location
-}
 
 function changeToRelevance() {
   date_checkbox_input.checked = false;
