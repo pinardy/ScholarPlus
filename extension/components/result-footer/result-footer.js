@@ -37,7 +37,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
       tooltip_counter += 1;
       
       //TODO: the button display should be dependent on whether the article is saved in the library
-      save_to_library_button.addEventListener("click", saveToLibrary.bind(null, library_icon, save_to_library_button));
+      save_to_library_button.addEventListener("click", saveToLibrary.bind(null, library_icon, save_to_library_button, i));
       footer_button_div.appendChild(save_to_library_button);
     } else {
       save_to_library_button.disabled = true;
@@ -49,7 +49,6 @@ for (var i = 0; i < individual_results_body.length; i++) {
     quote_icon.innerHTML = "format_quote";
     generate_citation_button.appendChild(quote_icon);
     generate_citation_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon generate-citation gs_or_cit gs_nph");
-    generate_citation_button.id = i;
     
 
     if (all_anchors[j].className == "gs_or_cit gs_nph") {
@@ -139,7 +138,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
     for (let i = 0; i < buttons_in_footer.length; i++) {
       button_class_names.push(buttons_in_footer[i].className);
     }
-    if (!button_class_names.includes("mdl-button mdl-js-button mdl-button--icon save-to-library")) {
+    if (!button_class_names.includes("mdl-button mdl-js-button mdl-button--icon save-to-library gs_or_sav")) {
       // create save to library button
       var save_to_library_button = document.createElement("button");
       var library_icon = document.createElement("i");
@@ -150,14 +149,14 @@ for (var i = 0; i < individual_results_body.length; i++) {
       save_to_library_button.disabled = true;
       buttons_in_footer[0].insertAdjacentElement("beforebegin", save_to_library_button);
     }
-    if (!button_class_names.includes("mdl-button mdl-js-button mdl-button--icon generate-citation")) {
+    if (!button_class_names.includes("mdl-button mdl-js-button mdl-button--icon generate-citation gs_or_cit gs_nph")) {
       // create generate citation button
       var generate_citation_button = document.createElement("button");
       var quote_icon = document.createElement("i");
       quote_icon.setAttribute("class", "material-icons")
       quote_icon.innerHTML = "format_quote";
       generate_citation_button.appendChild(quote_icon);
-      generate_citation_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon generate-citation");
+      generate_citation_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon generate-citation gs_or_cit gs_nph");
       generate_citation_button.disabled = true;
       buttons_in_footer[0].insertAdjacentElement("afterend", generate_citation_button);
     }
@@ -187,8 +186,8 @@ for (var i = 0; i < individual_results_body.length; i++) {
   indiv_title[i].insertAdjacentElement("afterend", footer_div);
 }
 
-function saveToLibrary(library_icon, save_to_library_button) {
-  if ((save_to_library_button.getAttribute("data-lid") == "") || (save_to_library_button.getAttribute("data-lid") == null)){
+function saveToLibrary(library_icon, save_to_library_button, i) {
+  if ((individual_results_body[i].getAttribute("data-lid") == "") || (individual_results_body[i].getAttribute("data-lid") == null)){
     save_to_library_button.setAttribute("data-lid", "saved");
     library_icon.innerHTML = "star";
     console.log("STARRING")
@@ -200,7 +199,6 @@ function saveToLibrary(library_icon, save_to_library_button) {
     console.log(library_icon)
   }
 }
-
 
 function openDownloadTab(url) {
   window.open(url);
