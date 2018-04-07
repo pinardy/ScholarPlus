@@ -16,7 +16,12 @@ for (var i = 0; i < individual_results_body.length; i++) {
     var save_to_library_button = document.createElement("button");
     var library_icon = document.createElement("i");
     library_icon.setAttribute("class", "material-icons");
-    library_icon.innerHTML = "star";
+    // console.log(save_to_library_button.getAttribute("data-lid"))
+    if (individual_results_body[i].getAttribute("data-lid").length > 0) {
+      library_icon.innerHTML = "star";
+    } else {
+      library_icon.innerHTML = "star_border";
+    }
     save_to_library_button.appendChild(library_icon);
     save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library gs_or_sav");
 
@@ -32,7 +37,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
       tooltip_counter += 1;
       
       //TODO: the button display should be dependent on whether the article is saved in the library
-      // save_to_library_button.addEventListener("click", saveToLibrary.bind(null, all_anchors[j].href));
+      save_to_library_button.addEventListener("click", saveToLibrary.bind(null, library_icon, save_to_library_button));
       footer_button_div.appendChild(save_to_library_button);
     } else {
       save_to_library_button.disabled = true;
@@ -139,7 +144,7 @@ for (var i = 0; i < individual_results_body.length; i++) {
       var save_to_library_button = document.createElement("button");
       var library_icon = document.createElement("i");
       library_icon.setAttribute("class", "material-icons");
-      library_icon.innerHTML = "star";
+      library_icon.innerHTML = "star_border";
       save_to_library_button.appendChild(library_icon);
       save_to_library_button.setAttribute("class", "mdl-button mdl-js-button mdl-button--icon save-to-library gs_or_sav");
       save_to_library_button.disabled = true;
@@ -181,6 +186,21 @@ for (var i = 0; i < individual_results_body.length; i++) {
   var indiv_title = document.getElementsByClassName("gs_ri");
   indiv_title[i].insertAdjacentElement("afterend", footer_div);
 }
+
+function saveToLibrary(library_icon, save_to_library_button) {
+  if ((save_to_library_button.getAttribute("data-lid") == "") || (save_to_library_button.getAttribute("data-lid") == null)){
+    save_to_library_button.setAttribute("data-lid", "saved");
+    library_icon.innerHTML = "star";
+    console.log("STARRING")
+    console.log(library_icon)
+  } else {
+    save_to_library_button.setAttribute("data-lid", "");
+    library_icon.innerHTML = "star_border";
+    console.log("UNSTARRING")
+    console.log(library_icon)
+  }
+}
+
 
 function openDownloadTab(url) {
   window.open(url);

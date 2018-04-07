@@ -38,6 +38,7 @@ sort_div.appendChild(date_checkbox_label);
 
 actionCheckboxStyleChecker();
 
+
 // Div for 'Since' title
 var sinceTitle_div = document.createElement("div");
 var since_span = document.createElement("span");
@@ -121,7 +122,6 @@ var adv_search_text = document.createElement("span");
 adv_search_text.innerHTML = "Advanced Search";
 adv_search.appendChild(adv_search_text);
 adv_search.setAttribute("id", "gs_res_drw_adv");
-adv_search.addEventListener("click", popupAdvancedSearch)
 action_div.appendChild(adv_search);
 
 // alert button
