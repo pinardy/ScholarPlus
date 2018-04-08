@@ -70,8 +70,8 @@
 }
 
 .buttons:nth-last-of-type(1) {
-  width: 56px;
-  height: 56px;
+  width: 65px;
+  height: 65px;
   opacity: 1;
 }
 
@@ -94,11 +94,23 @@
   height: 100%;
   border-radius: 50%;
 }
-.buttons span.rotate {
-  background: #DB4437 url("https://cbwconline.com/IMG/Codepen/Add.svg") center no-repeat;
+.buttons span .rotate {
+  /* background: #DB4437 url("https://cbwconline.com/IMG/Codepen/Add.svg") center no-repeat; */
   position: absolute;
-  transform: rotate(90deg);
-  transition: .3s;
+  /* transform: rotate(90deg); */
+  /* transition: .3s; */
+}
+
+.buttons span #current-least {
+  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
+}
+
+.buttons span #current-def {
+  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
+}
+
+.buttons span #current-most {
+  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
 }
 
 [tooltip]:before {

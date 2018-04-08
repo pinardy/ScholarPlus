@@ -64,50 +64,7 @@ function toggleMostVisibleAll() {
   window.location.replace(location);
 }
 
-window.addEventListener("load", function mostStyleChange() {
-  var location = window.location.href;
-  if (location.match(/&num=5/g)) {
-    for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "block";
-    }
-    for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "block";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-      extra_footer[i].style.display = "none";
-    }
-    for (var i = 0; i < author_div.length; i++) {
-      author_div[i].style.display = "block";
-      retrieveAuthorProfile(author_div[i], authors[i], i, true);
-    }
-  } else if (location.match(/&num=20/g)) {
-    for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "none";
-    }
-    for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "none";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-      extra_footer[i].style.display = "none";
-    }
-    for (var i = 0; i < author_div.length; i++) {
-      author_div[i].style.display = "none";
-    }
-  } else {
-    for (var i = 0; i < description.length; i++) {
-      description[i].style.display = "block";
-    }
-    for (var i = 0; i < authors.length; i++) {
-      authors[i].style.display = "block";
-    }
-    for (var i = 0; i < extra_footer.length; i++) {
-      extra_footer[i].style.display = "none";
-    }
-    for (var i = 0; i < author_div.length; i++) {
-      author_div[i].style.display = "none";
-    }
-  }
-});
+
 
 // Floating Action Button
 var float_nav = document.createElement("nav");
@@ -131,20 +88,67 @@ leastVisButton.setAttribute('href', '#');
 leastVisButton.setAttribute('tooltip', 'Least Visible');
 leastVisButton.addEventListener("click", toggleLeastVisibleAll);
 
-var button_6 = document.createElement("a");
-button_6.setAttribute('class', 'buttons');
-button_6.setAttribute('href', '#');
-// button_6.setAttribute('tooltip', 'Button 6');
+var fab = document.createElement("a");
+fab.setAttribute('class', 'buttons');
+fab.setAttribute('href', '#');
 
 var span_1 = document.createElement("span");
 var span_2 = document.createElement("span");
 span_2.setAttribute('class', 'rotate');
 span_1.appendChild(span_2);
-button_6.appendChild(span_1);
+fab.appendChild(span_1);
 
 float_nav.appendChild(mostVisButton);
 float_nav.appendChild(defVisButton);
 float_nav.appendChild(leastVisButton);
-float_nav.appendChild(button_6);
+float_nav.appendChild(fab);
 
 document.body.appendChild(float_nav);
+
+window.addEventListener("load", function mostStyleChange() {
+  var location = window.location.href;
+  if (location.match(/&num=5/g)) {
+    span_2.setAttribute('id', 'current-most');
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "block";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "block";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "none";
+    }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "block";
+      retrieveAuthorProfile(author_div[i], authors[i], i, true);
+    }
+  } else if (location.match(/&num=20/g)) {
+    span_2.setAttribute('id', 'current-least');
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "none";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "none";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "none";
+    }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "none";
+    }
+  } else {
+    span_2.setAttribute('id', 'current-def');
+    for (var i = 0; i < description.length; i++) {
+      description[i].style.display = "block";
+    }
+    for (var i = 0; i < authors.length; i++) {
+      authors[i].style.display = "block";
+    }
+    for (var i = 0; i < extra_footer.length; i++) {
+      extra_footer[i].style.display = "none";
+    }
+    for (var i = 0; i < author_div.length; i++) {
+      author_div[i].style.display = "none";
+    }
+  }
+});

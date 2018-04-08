@@ -84,16 +84,17 @@ a {
   z-index: 150;
 }
 .btn i {
+  font-size: 30px;
   cursor: pointer;
-  margin-top: 16px;
+  margin-top: 14px;
   margin-right: 0px;
 }
 
-.btn a {
-  cursor: pointer;
-  margin-top: 16px;
-  margin-right: 0px;
-}
+/* .btn a { */
+  /* cursor: pointer; */
+  /* margin-top: 16px; */
+  /* margin-right: 0px; */
+/* } */
 
 .local-most{
   color: #000;

@@ -74,9 +74,9 @@ for (let i = 0; i < individual_results_body.length; i++){
         
         ease: Power0.easeInOut})
     .staggerFrom(".btn .sec[reference="+i+"]", .1, {
-        alpha: 0, 
+        alpha: 0,
         top:0, 
-        left:0, 
+        left:60, 
         ease: Power0.easeInOut
         }, .1, .3)
     // .to(".open-toolbar[reference="+i+"]", .5, {
