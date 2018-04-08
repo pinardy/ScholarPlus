@@ -55,7 +55,7 @@ for (let i = 0; i < individual_results_body.length; i++) {
   button_div.appendChild(mv_button);
 
   button_div.setAttribute('class', 'local-button-container');
-  individual_results_body[i].insertBefore(button_div, null);
+  //individual_results_body[i].insertBefore(button_div, null);
 
   // check if the result have description, to prevent screwing up the indexing later on
   var indiv_description = individual_results_body[i].getElementsByClassName("gs_rs");

@@ -8,7 +8,7 @@
   },
   "content_scripts": [{
     "css": ["/components/loader/loader.css", "styles.css", "/components/visibility-level/visibility.css", "/components/result-footer/result-footer.css", "/components/visibility-level/local-visibility.css", "/components/sidebar/sidebar.css"],
-    "js": ["/components/loader/loader.js", "materialdesign.js", "/components/visibility-level/visibility.js", "/components/result-footer/result-footer.js", "/components/visibility-level/local-visibility.js", "/components/sidebar/sidebar.js"],
+    "js": ["jquery-3.3.1.min.js", "jquery.gsap.min.js", "TweenLite.min.js", "TweenMax.min.js", "TimelineLite.min.js", "/components/loader/loader.js", "materialdesign.js", "/components/visibility-level/visibility.js", "/components/result-footer/result-footer.js", "/components/visibility-level/local-visibility.js", "/components/visibility-level/local-visibility-jquery.js", "/components/sidebar/sidebar.js"],
     "matches": ["https://scholar.google.com.sg/scholar*", "https://scholar.google.com/scholar*"]
   }],
   "permissions": [],
@@ -21,7 +21,7 @@
     "*.SVG"
   ],
   "background": {
-    "scripts": ["materialdesign.js"],
+    "scripts": ["materialdesign.js", "jquery-3.3.1.min.js", "jquery.gsap.min.js", "TweenLite.min.js", "TweenMax.min.js", "TimelineLite.min.js"],
     "persistent": true
   }
 }
