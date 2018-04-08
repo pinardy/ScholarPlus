@@ -1,7 +1,7 @@
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 for (let i = 0; i < individual_results_body.length; i++) {
     var btn_div = document.createElement("div");
-    var open_toolbar = document.createElement("i");
+    var open_toolbar = document.createElement("a");
     var local_most = document.createElement("i");
     var local_def = document.createElement("i");
     var local_least = document.createElement("i");
@@ -22,7 +22,7 @@ for (let i = 0; i < individual_results_body.length; i++) {
     local_least.setAttribute('reference', i);
     
     btn_div.setAttribute('class', 'btn');
-    open_toolbar.setAttribute('class', 'material-icons open-toolbar');
+    open_toolbar.setAttribute('class', 'material-icons open-toolbar local-current-def');
     local_most.setAttribute('class', 'sec material-icons local-most');
     local_def.setAttribute('class', 'sec material-icons local-def');
     local_least.setAttribute('class', 'sec material-icons local-least');
@@ -33,8 +33,7 @@ for (let i = 0; i < individual_results_body.length; i++) {
     // local_def.setAttribute('style', 'font-size:30px;');
     // local_least.setAttribute('style', 'font-size:30px;');
 
-    open_toolbar.innerHTML = "add";
-    var extension_id = 'chrome-extension://__MSG_@@extension_id__/'
+    // open_toolbar.innerHTML = "add";
     local_most.innerHTML = "radio_button_unchecked";
     local_def.innerHTML = "radio_button_unchecked";
     local_least.innerHTML = "radio_button_unchecked";
@@ -48,16 +47,65 @@ for (let i = 0; i < individual_results_body.length; i++) {
     local_most.addEventListener("click", toggleMostVisible.bind(null, i));
     local_def.addEventListener("click", toggleDefault.bind(null, i));
     local_least.addEventListener("click", toggleLeastVisible.bind(null, i));
+    
+    local_most.addEventListener("click", changeLocalButtonView.bind(null, 2, i));
+    local_def.addEventListener("click", changeLocalButtonView.bind(null, 1, i));
+    local_least.addEventListener("click", changeLocalButtonView.bind(null, 0, i));
 
     btn_div.append(open_toolbar);
     btn_div.append(local_most);
     btn_div.append(local_def);
     btn_div.append(local_least);
 
-    //document.body.append(btn_div);
-    individual_results_body[i].insertBefore(btn_div, null);
-    
-    
+    individual_results_body[i].insertBefore(btn_div, null); 
+}
+
+function refreshViewButtonAll() {
+  var viewType;
+  var result_view_button = document.getElementsByClassName("open-toolbar");
+  var location = window.location.href;
+  if (location.match(/&num=5/g)) {
+      viewType = 2;
+  } else if (location.match(/&num=20/g)) {
+      viewType = 0;
+  } else {
+      viewType = 1;
+  }
+  switch (viewType){
+    case 0:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'material-icons open-toolbar local-current-least');
+        }
+        break;
+    case 1:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'material-icons open-toolbar local-current-def');
+        }
+        break;
+    case 2:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'material-icons open-toolbar local-current-most');
+        }
+    }
+}
+
+// Runs to update all view buttons based on current global view
+refreshViewButtonAll();
+
+function changeLocalButtonView(viewType, index) {
+    //0 = least, 1 = default, 2 = most
+    var result_view_button = document.getElementsByClassName("open-toolbar");
+    switch (viewType){
+        case 0:
+            result_view_button[index].setAttribute('class', 'material-icons open-toolbar local-current-least');
+            break;
+        case 1:
+            result_view_button[index].setAttribute('class', 'material-icons open-toolbar local-current-def');
+            break;
+        case 2:
+            result_view_button[index].setAttribute('class', 'material-icons open-toolbar local-current-most');
+    }
+    //alert(index);
 }
 
 var animation = [];
@@ -105,52 +153,3 @@ $(".open-toolbar").click(function(e) {
       var ref = $(this).attr("reference");
       toggle_options(ref);
 });
-
-
-
-
-
-// var addItemTl = new TimelineLite({paused: true}),
-    // isOPen = false;
-// addItemTl.to(".btn", .5, {
-  // x:"+=140", 
-  // y:"-=130", 
-  // borderWidth:90, 
-  // overflow:"visible", 
-  // backgroundColor: "#FFA000",
-  // ease: Power4.easeInOut})
-
-// .staggerFrom(".btn .sec", .4, {
-  // alpha: 0, 
-  // top:0, 
-  // left:0, 
-  // ease: Power3.easeInOut
-// }, .1, .3)
-
-// .to("#open-toolbar", .5, {
-  // rotation:360, 
-  // // className: "+=fa-minus",
-  // ease:Power3.easeInOut
-// }, 0);
-
-// $("#open-toolbar").click(function(e) {
-  // e.preventDefault();
-  // if(addItemTl.progress() === 1) {
-    // addItemTl.reverse();
-    // isOPen = false;
-    // alert("not open");
-  // }
-  // else {
-    // addItemTl.play();
-    // isOPen = true;
-    // alert("open");
-  // }
-// });
-
-
-// $('.sec').mouseenter(function(){
-  // TweenMax.to($(this), 1, {scale:1.2, ease:Power3.easeOut});
-// });
-// $('.sec').mouseout(function(){
-  // TweenMax.to($(this), 1, {scale:1, ease:Power3.easeOut});
-// });

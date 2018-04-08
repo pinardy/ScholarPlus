@@ -71,6 +71,7 @@ var description = document.getElementsByClassName("gs_rs");
 var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
 var author_div = document.getElementsByClassName("local_author_container");
+var result_view_button = document.getElementsByClassName("open-toolbar");
 
 function toggleLeastVisible(index) {
   description[index].style.display = "none";

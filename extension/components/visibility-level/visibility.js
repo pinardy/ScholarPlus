@@ -65,7 +65,6 @@ function toggleMostVisibleAll() {
 }
 
 
-
 // Floating Action Button
 var float_nav = document.createElement("nav");
 float_nav.setAttribute('class', 'container');
@@ -75,18 +74,21 @@ mostVisButton.setAttribute('class', 'buttons');
 mostVisButton.setAttribute('href', '#');
 mostVisButton.setAttribute('tooltip', 'Most Visible');
 mostVisButton.addEventListener("click", toggleMostVisibleAll);
+// mostVisButton.addEventListener("click", toggleViewButtonAll(2));
 
 var defVisButton = document.createElement("a");
 defVisButton.setAttribute('class', 'buttons');
 defVisButton.setAttribute('href', '#');
 defVisButton.setAttribute('tooltip', 'Default');
 defVisButton.addEventListener("click", toggleDefaultAll);
+// defVisButton.addEventListener("click", toggleViewButtonAll(1));
 
 var leastVisButton = document.createElement("a");
 leastVisButton.setAttribute('class', 'buttons');
 leastVisButton.setAttribute('href', '#');
 leastVisButton.setAttribute('tooltip', 'Least Visible');
 leastVisButton.addEventListener("click", toggleLeastVisibleAll);
+// leastVisButton.addEventListener("click", toggleViewButtonAll(0));
 
 var fab = document.createElement("a");
 fab.setAttribute('class', 'buttons');
