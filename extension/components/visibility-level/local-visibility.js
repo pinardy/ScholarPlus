@@ -72,12 +72,14 @@ var authors = document.getElementsByClassName("gs_a");
 var extra_footer = document.getElementsByClassName("gs_fl");
 var author_div = document.getElementsByClassName("local_author_container");
 var result_view_button = document.getElementsByClassName("open-toolbar");
+var number_of_citations = document.getElementsByClassName("citations-container");
 
 function toggleLeastVisible(index) {
   description[index].style.display = "none";
   authors[index].style.display = "none";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "none";
+  number_of_citations[index].style.display = "none";
 }
 
 function toggleDefault(index) {
@@ -85,6 +87,7 @@ function toggleDefault(index) {
   authors[index].style.display = "block";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "none";
+  number_of_citations[index].style.display = "block";
 }
 
 function toggleMostVisible(index) {
@@ -92,6 +95,7 @@ function toggleMostVisible(index) {
   authors[index].style.display = "block";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "block";
+  number_of_citations[index].style.display = "block";
 
   retrieveAuthorProfile(author_div[index], authors[index], index, true)
 

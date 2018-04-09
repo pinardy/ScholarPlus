@@ -118,7 +118,8 @@ for (let i = 0; i < individual_results_body.length; i++){
         // y:"-=130", 
         // borderWidth:90, 
         overflow:"visible", 
-        backgroundColor: "#db6237",
+        backgroundColor: "#76a2ee",
+        // backgroundColor: "#db6237",
         
         ease: Power0.easeInOut})
     .staggerFrom(".btn .sec[reference="+i+"]", .1, {

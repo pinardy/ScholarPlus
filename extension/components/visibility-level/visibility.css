@@ -102,15 +102,18 @@
 }
 
 .buttons span #current-least {
-  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
+  /* background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat; */
+  background: #4884ED url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
 }
 
 .buttons span #current-def {
-  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
+  /* background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat; */
+  background: #4884ED url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
 }
 
 .buttons span #current-most {
-  background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
+  /* background: #DB4437 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat; */
+  background: #4884ED url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
 }
 
 [tooltip]:before {
