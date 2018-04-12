@@ -76,13 +76,13 @@
 }
 
 .buttons:nth-last-of-type(2) {
-  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
+  background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
 }
 .buttons:nth-last-of-type(3) {
-  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
+  background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
 }
 .buttons:nth-last-of-type(4) {
-  background: #3C80F6 url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
+  background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
 }
 
 .buttons:hover {

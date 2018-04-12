@@ -1,5 +1,110 @@
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
 for (let i = 0; i < individual_results_body.length; i++) {
+    var local_nav = document.createElement("nav");
+    local_nav.setAttribute('class', 'local-nav');
+
+    var local_most = document.createElement("a");
+    local_most.setAttribute('class', 'local-buttons');
+    local_most.setAttribute('href', '#');
+    // local_most.setAttribute('tooltip', 'Most Visible');
+    //local_most.addEventListener("click", toggleMostVisibleAll);
+    // local_most.addEventListener("click", toggleViewButtonAll(2));
+
+    var local_def = document.createElement("a");
+    local_def.setAttribute('class', 'local-buttons');
+    local_def.setAttribute('href', '#');
+    // local_def.setAttribute('tooltip', 'Default');
+    //local_def.addEventListener("click", toggleDefaultAll);
+    // local_def.addEventListener("click", toggleViewButtonAll(1));
+
+    var local_least = document.createElement("a");
+    local_least.setAttribute('class', 'local-buttons');
+    local_least.setAttribute('href', '#');
+    // local_least.setAttribute('tooltip', 'Least Visible');
+    //local_least.addEventListener("click", toggleLeastVisibleAll);
+    // local_least.addEventListener("click", toggleViewButtonAll(0));
+
+    var fab = document.createElement("a");
+    fab.setAttribute('class', 'local-buttons main local-current-defv2');
+    fab.setAttribute('href', '#');
+
+    // var span_1 = document.createElement("span");
+    // var span_2 = document.createElement("span");
+    // span_2.setAttribute('class', 'rotate');
+    // span_1.appendChild(span_2);
+    // fab.appendChild(span_1);
+    
+    local_most.addEventListener("click", toggleMostVisible.bind(null, i));
+    local_def.addEventListener("click", toggleDefault.bind(null, i));
+    local_least.addEventListener("click", toggleLeastVisible.bind(null, i));
+    
+    local_most.addEventListener("click", changeLocalButtonView.bind(null, 2, i));
+    local_def.addEventListener("click", changeLocalButtonView.bind(null, 1, i));
+    local_least.addEventListener("click", changeLocalButtonView.bind(null, 0, i));
+
+    local_nav.appendChild(local_most);
+    local_nav.appendChild(local_def);
+    local_nav.appendChild(local_least);
+    local_nav.appendChild(fab);
+
+    //document.body.appendChild(local_nav);
+    
+    
+    var test = document.createElement("p");
+    test.innerHTML = "hi";
+    individual_results_body[i].insertBefore(local_nav, null);
+}
+
+function refreshViewButtonAll() {
+  var viewType;
+  var result_view_button = document.getElementsByClassName("main");
+  var location = window.location.href;
+  if (location.match(/&num=5/g)) {
+      viewType = 2;
+  } else if (location.match(/&num=20/g)) {
+      viewType = 0;
+  } else {
+      viewType = 1;
+  }
+  switch (viewType){
+    case 0:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'local-buttons main local-current-leastv2');
+        }
+        break;
+    case 1:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'local-buttons main local-current-defv2');
+        }
+        break;
+    case 2:
+        for (let i = 0; i < result_view_button.length; i++) {
+            result_view_button[i].setAttribute('class', 'local-buttons main local-current-mostv2');
+        }
+    }
+}
+
+function changeLocalButtonView(viewType, index) {
+    //0 = least, 1 = default, 2 = most
+    var result_view_button = document.getElementsByClassName("main");
+    switch (viewType){
+        case 0:
+            result_view_button[index].setAttribute('class', 'local-buttons main local-current-leastv2');
+            break;
+        case 1:
+            result_view_button[index].setAttribute('class', 'local-buttons main local-current-defv2');
+            break;
+        case 2:
+            result_view_button[index].setAttribute('class', 'local-buttons main local-current-mostv2');
+    }
+    //alert(index);
+}
+
+refreshViewButtonAll();
+
+/*
+var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");
+for (let i = 0; i < individual_results_body.length; i++) {
     var btn_div = document.createElement("div");
     var open_toolbar = document.createElement("a");
     var local_most = document.createElement("i");
@@ -89,6 +194,7 @@ function refreshViewButtonAll() {
     }
 }
 
+
 // Runs to update all view buttons based on current global view
 refreshViewButtonAll();
 
@@ -107,6 +213,8 @@ function changeLocalButtonView(viewType, index) {
     }
     //alert(index);
 }
+
+
 
 var animation = [];
 var openState = [];
@@ -154,3 +262,4 @@ $(".open-toolbar").click(function(e) {
       var ref = $(this).attr("reference");
       toggle_options(ref);
 });
+*/
