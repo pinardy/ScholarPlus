@@ -5,28 +5,28 @@ for (let i = 0; i < individual_results_body.length; i++) {
 
     var local_most = document.createElement("a");
     local_most.setAttribute('class', 'local-buttons');
-    local_most.setAttribute('href', '#');
+    // local_most.setAttribute('href', '#');
     // local_most.setAttribute('tooltip', 'Most Visible');
     //local_most.addEventListener("click", toggleMostVisibleAll);
     // local_most.addEventListener("click", toggleViewButtonAll(2));
 
     var local_def = document.createElement("a");
     local_def.setAttribute('class', 'local-buttons');
-    local_def.setAttribute('href', '#');
+    // local_def.setAttribute('href', '#');
     // local_def.setAttribute('tooltip', 'Default');
     //local_def.addEventListener("click", toggleDefaultAll);
     // local_def.addEventListener("click", toggleViewButtonAll(1));
 
     var local_least = document.createElement("a");
     local_least.setAttribute('class', 'local-buttons');
-    local_least.setAttribute('href', '#');
+    // local_least.setAttribute('href', '#');
     // local_least.setAttribute('tooltip', 'Least Visible');
     //local_least.addEventListener("click", toggleLeastVisibleAll);
     // local_least.addEventListener("click", toggleViewButtonAll(0));
 
     var fab = document.createElement("a");
     fab.setAttribute('class', 'local-buttons main local-current-defv2');
-    fab.setAttribute('href', '#');
+    // fab.setAttribute('href', '#');
 
     // var span_1 = document.createElement("span");
     // var span_2 = document.createElement("span");
@@ -50,8 +50,8 @@ for (let i = 0; i < individual_results_body.length; i++) {
     //document.body.appendChild(local_nav);
     
     
-    var test = document.createElement("p");
-    test.innerHTML = "hi";
+    // var test = document.createElement("p");
+    // test.innerHTML = "hi";
     individual_results_body[i].insertBefore(local_nav, null);
 }
 
@@ -84,6 +84,8 @@ function refreshViewButtonAll() {
     }
 }
 
+refreshViewButtonAll();
+
 function changeLocalButtonView(viewType, index) {
     //0 = least, 1 = default, 2 = most
     var result_view_button = document.getElementsByClassName("main");
@@ -100,7 +102,6 @@ function changeLocalButtonView(viewType, index) {
     //alert(index);
 }
 
-refreshViewButtonAll();
 
 /*
 var individual_results_body = document.getElementsByClassName("gs_r gs_or gs_scl");

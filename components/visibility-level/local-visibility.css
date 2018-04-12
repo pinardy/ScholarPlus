@@ -79,6 +79,7 @@ div.progress-bar-container {
 
 .local-buttons {
     display: block;
+    cursor: pointer;
     /* margin: 20px auto 0; */
     text-decoration: none;
     position: absolute;
