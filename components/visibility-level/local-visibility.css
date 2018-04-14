@@ -71,8 +71,8 @@ div.progress-bar-container {
 }
 
 .local-nav:hover .local-buttons:not(:last-of-type) {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     margin: 15px auto 0;
     opacity: 1;
 }
@@ -96,14 +96,16 @@ div.progress-bar-container {
     left: 50px;
     transition-delay: 20ms;
     background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_least.svg') center no-repeat;
+    background-size: 16px;
 }
 .local-buttons:nth-last-of-type(3) {
     width: 30px;
     height: 30px;
     top: -5px;
-    left: 80px;
+    left: 70px;
     transition-delay: 40ms;
     background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_def.svg') center no-repeat;
+    background-size: 16px;
 }
 .local-buttons:nth-last-of-type(4) {
     width: 30px;
@@ -112,6 +114,7 @@ div.progress-bar-container {
     left: 50px;
     transition-delay: 60ms;
     background: #7990BA url('chrome-extension://__MSG_@@extension_id__/view_most.svg') center no-repeat;
+    background-size: 16px;
 }
 .local-buttons:nth-last-of-type(1) {
     width: 45px;

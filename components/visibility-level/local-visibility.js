@@ -79,7 +79,7 @@ function toggleLeastVisible(index) {
   authors[index].style.display = "none";
   extra_footer[index].style.display = "none";
   author_div[index].style.display = "none";
-  number_of_citations[index].style.display = "none";
+  number_of_citations[index].style.display = "block";
 }
 
 function toggleDefault(index) {
